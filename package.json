@@ -1,0 +1,53 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.16.5",
+        "autoprefixer": "^10.4.13",
+        "axios": "^0.21.4",
+        "jquery": "^3.2",
+        "laravel-mix": "^6.0.43",
+        "lodash": "^4.17.19",
+        "popper.js": "^1.12",
+        "postcss": "^8.4.18",
+        "resolve-url-loader": "^3.1.2",
+        "rtlcss": "^3.5.0",
+        "sass": "^1.15.2",
+        "sass-loader": "^8.0.0",
+        "tailwindcss": "^3.2.3"
+    },
+    "dependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@inertiajs/inertia": "^0.10.1",
+        "@inertiajs/inertia-react": "^0.7.1",
+        "@inertiajs/progress": "^0.2.6",
+        "@mui/material": "^5.6.1",
+        "@tippyjs/react": "^4.2.6",
+        "aos": "^2.3.4",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-dual-range-slider": "^1.0.4",
+        "react-icons": "^4.6.0",
+        "react-loading": "^2.0.3",
+        "react-lottie": "^1.2.3",
+        "react-preloaders": "^3.0.3",
+        "react-router-dom": "^6.2.1",
+        "react-scroll": "^1.8.5",
+        "react-select": "^5.2.1",
+        "react-slick": "^0.28.1",
+        "react-tippy": "^1.4.0",
+        "slick-carousel": "^1.8.1",
+        "styled-components": "^5.3.3",
+        "swiper": "^8.4.4"
+    }
+}

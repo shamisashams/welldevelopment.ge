@@ -1,0 +1,156 @@
+{
+    "menu": [
+        {
+            "url": "category.index",
+            "name": "პროდ. კატეგორიები",
+            "i18n": "category",
+            "icon": "language",
+            "slug": "category"
+        },
+        {
+            "url": "product.index",
+            "name": "პროდუქცია",
+            "i18n": "product",
+            "icon": "language",
+            "slug": "product",
+            "submenu": [
+
+                {
+                    "url": "category.index",
+                    "name": "კატეგორიები",
+                    "i18n": "category",
+                    "icon": "language",
+                    "slug": "category"
+                }
+            ]
+        },
+        {
+            "url": "attribute.index",
+            "name": "ატრიბუტები",
+            "i18n": "attributes",
+            "icon": "language",
+            "slug": "attribute"
+        },
+        {
+            "url": "page.index",
+            "name": "გვერდები",
+            "i18n": "page",
+            "icon": "language",
+            "slug": "page"
+        },
+        {
+            "url": "slider.index",
+            "name": "სლაიდერი",
+            "i18n": "slider",
+            "icon": "language",
+            "slug": "slider"
+        },
+        {
+            "url": "language.index",
+            "name": "ენები",
+            "i18n": "language",
+            "icon": "language",
+            "slug": "language"
+        },
+        {
+            "url": "setting.index",
+            "name": "პარამეტრები",
+            "i18n": "setting",
+            "icon": "language",
+            "slug": "setting"
+        },
+        {
+            "url": "translation.index",
+            "name": "თარგმნა",
+            "i18n": "translation",
+            "icon": "g_translate",
+            "slug": "translation"
+        },
+        {
+            "url": "password.index",
+            "name": "პაროლის შეცვლა",
+            "i18n": "change password",
+            "icon": "g_translate",
+            "slug": "change_password"
+        },
+        {
+            "url": "order.index",
+            "name": "შეკვეთები",
+            "i18n": "order",
+            "icon": "g_translate",
+            "slug": "orders"
+        },
+        {
+            "url": "project.index",
+            "name": "Projects",
+            "i18n": "project",
+            "icon": "g_translate",
+            "slug": "project"
+        },
+        {
+            "url": "apartment.index",
+            "name": "Apartments",
+            "i18n": "apartment",
+            "icon": "apartment",
+            "slug": "apartment"
+        },
+        {
+            "url": "blog.index",
+            "name": "ბლოგი",
+            "i18n": "blog",
+            "icon": "g_translate",
+            "slug": "blog"
+        },
+        {
+            "url": "city.index",
+            "name": "ქალაქები",
+            "i18n": "city",
+            "icon": "city",
+            "slug": "city"
+        },
+        {
+            "url": "district.index",
+            "name": "უბნები",
+            "i18n": "district",
+            "icon": "district",
+            "slug": "district"
+        },
+        {
+            "url": "detail.index",
+            "name": "detail",
+            "i18n": "detail",
+            "icon": "detail",
+            "slug": "detail"
+        }
+    ],
+    "_comment": [
+        {
+            "url": "certificate.index",
+            "name": "certificate",
+            "i18n": "certificate",
+            "icon": "language",
+            "slug": "certificate"
+        },
+        {
+            "url": "category.index",
+            "name": "category",
+            "i18n": "category",
+            "icon": "language",
+            "slug": "category"
+        },
+        {
+            "url": "product.index",
+            "name": "product",
+            "i18n": "product",
+            "icon": "language",
+            "slug": "product"
+        },
+        {
+            "url": "project.index",
+            "name": "project",
+            "i18n": "project",
+            "icon": "language",
+            "slug": "project"
+        }
+    ]
+}
