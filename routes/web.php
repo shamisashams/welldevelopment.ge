@@ -128,6 +128,7 @@ Route::prefix('{locale?}')
             Route::get('/contact', [ContactController::class, 'index'])->name('client.contact.index');
             Route::post('/contact-us', [ContactController::class, 'mail'])->name('client.contact.mail');
 
+            Route::post('/call-request', [ContactController::class, 'callRequest'])->name('client.call_request');
 
             // About Page
             Route::get('about', [AboutUsController::class, 'index'])->name('client.about.index');

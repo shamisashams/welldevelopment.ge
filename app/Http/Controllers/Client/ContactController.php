@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CallRequest;
 use App\Mail\ContactEmail;
 use App\Models\Page;
 use App\Models\Setting;
@@ -78,5 +79,20 @@ class ContactController extends Controller
 
 
         //return Inertia::render('Contact/Contact');
+    }
+
+    public function callRequest(Request $request){
+        $data = $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'comment' => 'nullable'
+        ]);
+
+        $data['subject'] = 'Call Request';
+
+        $mailTo = Setting::where(['key' => 'email'])->first();
+        if (($mailTo !== null) && $mailTo->value) {
+            Mail::to($mailTo->value)->send(new CallRequest($data));
+        }
     }
 }

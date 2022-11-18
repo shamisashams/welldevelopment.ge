@@ -11,6 +11,33 @@ const CallPopup = ({ show, hide }) => {
 
     const {localizations} = usePage().props;
 
+    const [values, setValues] = useState({
+        name: "",
+        phone: "",
+        comment: "",
+    });
+
+    function post(){
+        axios.post(route('client.call_request'), values)
+            .then(function (response) {
+                console.log(response);
+                setSent(true)
+            })
+            .catch(function (error) {
+                console.log(error.response);
+                alert(error.response.data.message)
+            });
+    }
+
+    function handleChange(e) {
+        const key = e.target.name;
+        const value = e.target.value;
+        setValues((values) => ({
+            ...values,
+            [key]: value,
+        }));
+    }
+
   return (
     <div
       className={`fixed left-0 top-0 w-screen h-screen z-50 bg-black/[0.8] flex items-center justify-center p-10 transition-all duration-500 ${
@@ -26,11 +53,14 @@ const CallPopup = ({ show, hide }) => {
         </button>
         <div className="bold mb-5">{__('client.call_request',localizations)}</div>
         <form action="">
-          <input className="mb-3" type="text" placeholder={__('client.form_name',localizations)} />
-          <input className="mb-3" type="text" placeholder={__('client.form_phone',localizations)} />
-          <textarea className="mb-0" placeholder={__('client.form_comment',localizations)}></textarea>
+          <input onChange={handleChange} name="name" className="mb-3" type="text" placeholder={__('client.form_name',localizations)} />
+          <input onChange={handleChange} name="phone" className="mb-3" type="text" placeholder={__('client.form_phone',localizations)} />
+          <textarea onChange={handleChange} name="comment" className="mb-0" placeholder={__('client.form_comment',localizations)}></textarea>
         </form>
-        <CallButton onClick={() => setSent(true)} />
+        <CallButton onClick={() => {
+            post()
+
+        }} />
 
         <div
           className={`absolute left-0 top-0 w-full h-full flex flex-col items-center justify-center text-center p-20 bg-white rounded-xl transition-all duration-300 ${
