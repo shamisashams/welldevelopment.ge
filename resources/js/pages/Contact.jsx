@@ -13,7 +13,7 @@ import { Link, usePage } from '@inertiajs/inertia-react'
 
 const Contact = ({seo,info}) => {
 
-    const {errors} = usePage().props;
+    const {errors, localizations} = usePage().props;
 
     const [values, setValues] = useState({
         name: "",
@@ -47,7 +47,7 @@ const Contact = ({seo,info}) => {
                       <div className="flex items-center justify-center mb-5">
                           <IconDiv img="/client/assets/images/icons/16.png" />
 
-                          <span className="pl-4 bold">მოგვძებნე რუკაზე</span>
+                          <span className="pl-4 bold">{__('client.contact_t1',localizations)}</span>
                       </div>
                       <div className="rounded-2xl overflow-hidden shadow-lg mb-16">
                           <iframe
@@ -89,7 +89,7 @@ const Contact = ({seo,info}) => {
                                   <IconDiv img="/client/assets/images/icons/15.png" />
 
                                   <span className="pl-4 bold">
-                  თუ გაქვთ კითხვები, მოგვწერეთ ჩვენ სიამოვნებით გიპასუხებთ
+                  {__('client.contact_t2',localizations)}
                 </span>
                               </div>
                               <form onSubmit={handleSubmit} className=" max-w-sm mx-auto text-center">
@@ -97,7 +97,7 @@ const Contact = ({seo,info}) => {
                                       className="bg-gray-100 text-sm rounded-2xl"
                                       type="text"
                                       name="name"
-                                      placeholder="სახელი"
+                                      placeholder={__('client.form_name',localizations)}
                                       onChange={handleChange}
                                   />
                                   {errors.name && <div>{errors.name}</div>}
@@ -105,7 +105,7 @@ const Contact = ({seo,info}) => {
                                       className="bg-gray-100 text-sm rounded-2xl"
                                       type="text"
                                       name="surname"
-                                      placeholder="გვარი"
+                                      placeholder={__('client.form_surname',localizations)}
                                       onChange={handleChange}
                                   />
                                   {errors.surname && <div>{errors.surname}</div>}
@@ -121,20 +121,20 @@ const Contact = ({seo,info}) => {
                                       className="bg-gray-100 text-sm rounded-2xl"
                                       type="number"
                                       name="phone"
-                                      placeholder="ტელეფონი"
+                                      placeholder={__('client.form_phone',localizations)}
                                       onChange={handleChange}
                                   />
                                   {errors.phone && <div>{errors.phone}</div>}
                                   <div className="">
                   <textarea
                       className="h-32 bg-gray-100 text-sm rounded-2xl"
-                      placeholder="შეტყობინება"
+                      placeholder={__('client.form_message',localizations)}
                       name="message"
                       onChange={handleChange}
                   />
                                       {errors.message && <div>{errors.message}</div>}
                                   </div>
-                                  <MainButton text="გაგზავნა" />
+                                  <MainButton text={__('client.form_send_btn',localizations)} />
                               </form>
                           </div>
                       </div>

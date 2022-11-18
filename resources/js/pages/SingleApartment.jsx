@@ -22,7 +22,7 @@ const SingleApartment = ({seo}) => {
   const imgs = ["/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png"];
   const [showPopup, setShowPopup] = useState(false);
 
-  const {project_apartments,similar_apartments, apartment} = usePage().props;
+  const {project_apartments,similar_apartments, apartment,localizations} = usePage().props;
 
 
 
@@ -148,28 +148,28 @@ const SingleApartment = ({seo}) => {
                           </p>
                           <div className="flex text-center mt-10 text-sm flex-wrap">
                               <div className="mr-4 pr-4 mb-5 border-r">
-                                  <p className="opacity-50 mb-2">საძინებელი</p>
+                                  <p className="opacity-50 mb-2">{__('client.bedrooms',localizations)}</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/7.png" alt="" />
                                       <span>{apartment.bedrooms}</span>
                                   </p>{" "}
                               </div>
                               <div className="mr-4 pr-4 mb-5 border-r">
-                                  <p className="opacity-50 mb-2">საძინებელი</p>
+                                  <p className="opacity-50 mb-2">{__('client.bathrooms',localizations)}</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/8.png" alt="" />
                                       <span>{apartment.bathrooms}</span>
                                   </p>{" "}
                               </div>
                               <div className="mr-4 pr-4 mb-5 border-r">
-                                  <p className="opacity-50 mb-2">მთლიანი ფართი</p>
+                                  <p className="opacity-50 mb-2">{__('client.area',localizations)}</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/9.png" alt="" />
                                       <span>{apartment.area} M</span>
                                   </p>
                               </div>
                               <div className="mb-5">
-                                  <p className="opacity-50 mb-2">სართული</p>
+                                  <p className="opacity-50 mb-2">{__('client.floor',localizations)}</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/11.png" alt="" />
                                       <select className="border px-2 rounded" name="" id="">
@@ -185,11 +185,11 @@ const SingleApartment = ({seo}) => {
                           </div>
                       </div>
                       <div className="max-w-lg">
-                          <div className="mb-5">პროექტის აღწერა</div>
+                          <div className="mb-5">{__('client.description',localizations)}</div>
                           <p className="opacity-50 mb-5 border-b pb-5">
                               {renderHTML(apartment.description)}
                           </p>
-                          <div className="mb-5">დეტალები</div>
+                          <div className="mb-5">{__('client.details',localizations)}</div>
                           {apartment.details.map((item, index) => {
                               return (
                                   <p key={index} className="opacity-50 mb-5">
@@ -206,17 +206,17 @@ const SingleApartment = ({seo}) => {
                               <CallButton onClick={() => setShowPopup(true)} />
                           </button>
                           <p className="mt-5">
-                              ან დაგვიკავშირდი: <a href="tel:+995579904804">+995 579 904 804</a>
+                              {__('client.or_contact_us',localizations)}: <a href="tel:+995579904804">+995 579 904 804</a>
                           </p>
                       </div>
                   </section>
               </div>
               <section className="py-20">
-                  <div className="bold text-lg mb-10">სხვა ბინები იგივე კომპლექსში</div>
+                  <div className="bold text-lg mb-10">{__('client.project_flats',localizations)}</div>
                   <ProjectSlider2 items={project_apartments} />
               </section>
               <section className="pb-20">
-                  <div className="bold text-lg mb-10">მსგავსი ბინები</div>
+                  <div className="bold text-lg mb-10">{__('client.similar_flats',localizations)}</div>
                   <ProjectSlider2 items={similar_apartments} />
               </section>
               <CallPopup show={showPopup} hide={() => setShowPopup(false)} />

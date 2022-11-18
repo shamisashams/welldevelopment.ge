@@ -23,7 +23,7 @@ import { Inertia } from "@inertiajs/inertia";
 const Home = ({seo}) => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const {projects, apartments, blogs, errors} = usePage().props;
+  const {projects, apartments, blogs, errors, localizations} = usePage().props;
 
     const [values, setValues] = useState({
         name: "",
@@ -56,17 +56,17 @@ const Home = ({seo}) => {
               <section className="py-10 bg-custom-slate-200 ">
                   <div className="wrapper">
                       <div className="bold text-center text-3xl mb-10">
-                          აქტიური პროექტები
+                          {__('client.active_projects',localizations)}
                       </div>
                       <ProjectSlider1 items={projects} />
                   </div>
               </section>
               <section className="wrapper py-10">
-                  <div className="bold  text-2xl mb-6">მიმდინარე შეთავაზებები</div>
+                  <div className="bold  text-2xl mb-6">{__('client.current_offers',localizations)}</div>
                   <ProjectSlider2 items={apartments} />
                   <div className="text-right py-5">
                       <Link href="/">
-                          <MainButton text="ყველა სტატია" />
+                          <MainButton text={__('client.all_offers',localizations)} />
                       </Link>
                   </div>
               </section>
@@ -83,42 +83,39 @@ const Home = ({seo}) => {
                                   <AiFillPlayCircle className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:animate-pulse w-9 h-9 text-white" />
                               </div>
                               <div>
-                                  <div className="bold">რამდენიმე სიტყვა ვიდეოს შესახებ</div>
+                                  <div className="bold">{__('client.home_about_h',localizations)}</div>
                                   <p className="opacity-70 my-1 text-sm">
-                                      ჩვენ ვართ უძრავი ქონების თანამედროვე პლატფორმა, რომელიც
-                                      ინდუსტრიის ყველა მოთამაშეზე არის გათვლილი
+                                      {__('client.home_about_t',localizations)}
                                   </p>
                                   <Link href="/" className="text-custom-blue underline">
-                                      ნახე ვიდეო
+                                      {__('client.home_about_video',localizations)}
                                   </Link>
                               </div>
                           </div>
                       </div>
                       <div className="max-w-xl">
                           <div className="xl:text-5xl sm:text-3xl text-xl bold xl:mb-8 mb-3">
-                              ვინ ვართ ჩვენ?
+                              {__('client.home_about_h1',localizations)}
                           </div>
                           <p className="opacity-70 mb-7">
-                              ჩვენ ვართ უძრავი ქონების თანამედროვე პლატფორმა, რომელიც ინდუსტრიის
-                              ყველა მოთამაშეზე არის გათვლილი და ორიენტირებულია მომხმარებელს
-                              დაზუსტებული, სანდო და ხარისხიანი ინფორმაცია მიაწოდოს.
+                              {__('client.home_about_t1',localizations)}
                           </p>
                           <Link href="/">
-                              <MainButton text="გაიგე  მეტი" />
+                              <MainButton text={__('client.learn_more',localizations)} />
                           </Link>
                           <div className="flex mt-12 mb-8">
                               <div className="rounded-lg mr-5">
                                   <IconDiv img="/client/assets/images/icons/15.png" />
                               </div>
                               <div className="bold">
-                                  თუ გაქვთ კითხვები, მოგვწერეთ ჩვენ სიამოვნებით გიპასუხებთ
+                                  {__('client.home_contact_text',localizations)}
                               </div>
                           </div>
                           <div className="max-w-md">
                               <input
                                   className="bg-white"
                                   type="text"
-                                  placeholder="სახელი"
+                                  placeholder={__('client.form_name',localizations)}
                                   name="name"
                                   onChange={handleChange}
                               />
@@ -126,7 +123,7 @@ const Home = ({seo}) => {
                               <input
                                   className="bg-white"
                                   type="text"
-                                  placeholder="გვარი"
+                                  placeholder={__('client.form_surname',localizations)}
                                   name="surname"
                                   onChange={handleChange}
                               />
@@ -134,7 +131,7 @@ const Home = ({seo}) => {
                               <input
                                   className="bg-white"
                                   type="text"
-                                  placeholder="ელ. ფოსტა"
+                                  placeholder={__('client.form_email',localizations)}
                                   name="email"
                                   onChange={handleChange}
                               />
@@ -142,30 +139,30 @@ const Home = ({seo}) => {
                               <input
                                   className="bg-white"
                                   type="text"
-                                  placeholder="ტელეფონი"
+                                  placeholder={__('client.form_phone',localizations)}
                                   name="phone"
                                   onChange={handleChange}
                               />
                               {errors.phone && <div>{errors.phone}</div>}
                               <textarea
                                   className="bg-white"
-                                  placeholder="შეტყობინება"
+                                  placeholder={__('client.form_message',localizations)}
                                   name="message"
                                   onChange={handleChange}
                               ></textarea>
                               {errors.message && <div>{errors.message}</div>}
-                              <MainButton onClick={handleSubmit} text="გაგზავნა" />
+                              <MainButton onClick={handleSubmit} text={__('client.form_send_btn',localizations)} />
                           </div>
                       </div>
                   </div>
               </section>
               <section className="py-20 ">
                   <div className="wrapper">
-                      <div className="bold text-center text-3xl mb-10">ბლოგი</div>
+                      <div className="bold text-center text-3xl mb-10">{__('client.home_blog',localizations)}</div>
                       <BlogSlider items={blogs} />
                       <div className="text-right">
                           <Link href={route('client.blog.index')}>
-                              <MainButton text="ყველა სტატია" />
+                              <MainButton text={__('client.home_all_blogs',localizations)} />
                           </Link>
                       </div>
                   </div>

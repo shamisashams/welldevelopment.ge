@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import {Link} from "@inertiajs/inertia-react";
 //import CalIcon from "../assets/images/icons/10.png";
+import {usePage } from '@inertiajs/inertia-react';
 
 export const IconDiv = ({ img }) => {
   return (
@@ -56,6 +57,7 @@ export const MainButton = ({ text, onClick }) => {
 };
 
 export const CallButton = ({ onClick }) => {
+    const {localizations} = usePage().props;
   return (
     <button
       onClick={onClick}
@@ -66,7 +68,7 @@ export const CallButton = ({ onClick }) => {
         src="/client/assets/images/icons/10.png"
         alt=""
       />
-      მოითხოვე ზარი
+        {__('client.call_request',localizations)}
     </button>
   );
 };

@@ -16,7 +16,7 @@ import { Link, usePage } from '@inertiajs/inertia-react'
 const SingleProject = ({seo}) => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const {project, related_projects, project_apartments} = usePage().props;
+  const {project, related_projects, project_apartments, localizations} = usePage().props;
 
     const renderHTML = (rawHTML) =>
         React.createElement("p", {
@@ -58,7 +58,7 @@ const SingleProject = ({seo}) => {
                           <div className="flex justify-start mt-10 lg:flex-nowrap flex-wrap">
                               <p className="flex mr-5 mb-5 text-sm">
                                   <div className="lg:text-right opacity-50 pr-3 border-r border-slate-500">
-                                      სარეკრეაციო სივრცე
+                                      {__('client.recreational_space',localizations)}
                                   </div>
                                   <span className="bold text-xl pl-3 align-middle">
                   {project.recreational_space} კვ.მ
@@ -66,24 +66,24 @@ const SingleProject = ({seo}) => {
                               </p>
                               <p className="flex  mr-5 mb-5 text-sm">
                                   <div className="lg:text-right opacity-50 pr-3 border-r  border-slate-500">
-                                      ღია და დახურული ავტოსადგომი
+                                      {__('client.parking',localizations)}
                                   </div>
                                   <span className="bold text-xl pl-3 align-middle">{project.parking}</span>
                               </p>
                               <p className="flex mr-5 mb-5 text-sm">
                                   <div className="lg:text-right opacity-50 pr-3 border-r  border-slate-500">
-                                      ხელმისაწვდომი ბინები
+                                      {__('client.available_flats',localizations)}
                                   </div>
                                   <span className="bold text-xl pl-3 align-middle">{project_apartments.total}</span>
                               </p>
                           </div>
                       </div>
                       <div className="max-w-lg">
-                          <div className="mb-5">პროექტის აღწერა</div>
+                          <div className="mb-5">{__('client.project_description',localizations)}</div>
                           <p className="opacity-50 mb-5 border-b pb-5">
                               {renderHTML(project.description)}
                           </p>
-                          <div className="mb-5">დეტალები</div>
+                          <div className="mb-5">{__('client.details',localizations)}</div>
                           {project.details.map((item, index) => {
                               return (
                                   <p key={index} className="opacity-50 mb-5">
@@ -94,12 +94,12 @@ const SingleProject = ({seo}) => {
                           })}
                           <CallButton onClick={() => setShowPopup(true)} />
                           <p className="mt-5">
-                              ან დაგვიკავშირდი: <a href="tel:+995579904804">+995 579 904 804</a>
+                              {__('client.or_contact_us',localizations)}: <a href="tel:+995579904804">+995 579 904 804</a>
                           </p>
                       </div>
                   </section>
                   <section className="my-10">
-                      <div className="bold text-lg mb-10">ბინები კომპლექსში</div>
+                      <div className="bold text-lg mb-10">{__('client.project_flats',localizations)}</div>
                       <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-y-10 gap-x-5 pb-5">
                           {project_apartments.data.map((item, index) => {
                               return (
@@ -121,7 +121,7 @@ const SingleProject = ({seo}) => {
                   </section>
                   <section className="my-20 pt-10">
                       <div className="bold text-2xl text-center mb-16">
-                          სხვა აქტიური პროექტები
+                          {__('client.other_projects',localizations)}
                       </div>
                       <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-y-10 gap-x-5 pb-5">
                           {related_projects.map((item, index) => {

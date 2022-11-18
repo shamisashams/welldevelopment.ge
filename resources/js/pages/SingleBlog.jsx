@@ -14,7 +14,7 @@ import Layout from "../Layouts/Layout";
 
 const SingleBlog = ({seo}) => {
 
-    const {blog,related_blogs} = usePage().props;
+    const {blog,related_blogs,localizations} = usePage().props;
 
     const renderHTML = (rawHTML) =>
         React.createElement("p", {
@@ -101,7 +101,7 @@ const SingleBlog = ({seo}) => {
                       <img src="/client/assets/images/other/5.png" alt="" />
                   </div>*/}
                   <div className="bold text-center text-base pt-5 mb-6">
-                      გაუზიარე მეგობრებს
+                      {__('client.social_share',localizations)}
                   </div>{" "}
                   <div className="flex items-center  justify-center mt-5">
                       <a href="#">
@@ -116,7 +116,7 @@ const SingleBlog = ({seo}) => {
                   </div>
               </section>{" "}
               <section className="pb-20 wrapper">
-                  <div className="bold text-xl mb-10">პოპულარული სტატიები</div>
+                  <div className="bold text-xl mb-10">{__('client.other_blogs',localizations)}</div>
                   <BlogSlider items={related_blogs} />
               </section>
           </>

@@ -1,10 +1,13 @@
 import React, {useState} from "react";
-import { projects } from "../components/Data";
+//import { projects } from "../components/Data";
 import { ProjectBox } from "../components/ProjectBoxes";
 import Layout from "../Layouts/Layout";
 import axios from "axios";
+import {usePage } from '@inertiajs/inertia-react';
 
 const Favorites = ({seo}) => {
+
+    const {localizations} = usePage().props;
 
     let _cart = localStorage.getItem("welldevelopment_favorite");
     let cart;
@@ -32,7 +35,7 @@ const Favorites = ({seo}) => {
   return (
       <Layout seo={seo}>
           <section className="wrapper py-20">
-              <div className="text-xl bold mb-10">ფავორიტები</div>
+              <div className="text-xl bold mb-10">{__('client.favorites',localizations)}</div>
               <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-10 gap-x-5 pb-5">
                   {products.map((item, index) => {
                       return (

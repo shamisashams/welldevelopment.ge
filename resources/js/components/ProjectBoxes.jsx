@@ -14,6 +14,8 @@ import { Inertia } from "@inertiajs/inertia";
 export const ProjectBox = (props) => {
   const [favorite, setFavorite] = useState(props.favorite);
 
+  const {localizations} = usePage().props;
+
     const addToFavorite = function (product) {
         //localStorage.removeItem('cart')
         let _cart = localStorage.getItem("welldevelopment_favorite");
@@ -62,7 +64,7 @@ export const ProjectBox = (props) => {
       <div className="overflow-hidden rounded-2xl relative shadow-lg h-full bg-white">
         {props.active && (
           <button className="absolute left-3 top-3 text-white rounded-xl py-3 px-6 bg-green-400">
-            აქცია
+              {__('client.action',localizations)}
           </button>
         )}
         <button
@@ -130,6 +132,7 @@ export const ActiveProject = ({ link, img, name }) => {
 };
 
 export const BlogBox = (props) => {
+    const {localizations} = usePage().props;
   return (
     <div className="overflow-hidden rounded-2xl relative shadow-lg h-full bg-white">
       <div className="h-52 overflow-hidden rounded-xl mb-4">
@@ -146,7 +149,7 @@ export const BlogBox = (props) => {
             href={props.link}
             className="bg-custom-slate-200 py-3 px-5 rounded-xl text-custom-blue"
           >
-            გაიგე მეტი
+              {__('client.learn_more',localizations)}
           </Link>
         </div>
       </div>

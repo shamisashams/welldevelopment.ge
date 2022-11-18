@@ -2,13 +2,13 @@ import React, { useState } from "react";
 //import { Link, useLocation } from "react-router-dom";
 import { Link, usePage } from '@inertiajs/inertia-react'
 //import Logo from "../assets/images/logo/1.png";
-import { navigation } from "./Data";
+//import { navigation } from "./Data";
 import { TiHeartFullOutline } from "react-icons/ti";
 import { FaGlobeAmericas } from "react-icons/fa";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const { pathname, locales, currentLocale, locale_urls } = usePage().props;
+  const { pathname, locales, currentLocale, locale_urls, localizations } = usePage().props;
 
 
     let _cart = localStorage.getItem("welldevelopment_favorite");
@@ -18,6 +18,29 @@ const Navbar = () => {
     } else cart = [];
 
     const [favoriteCount, setFavoriteCount] = useState(cart.length);
+
+    const navigation = [
+        {
+            text: __('client.nav_home',localizations),
+            link: route('client.home.index'),
+        },
+        {
+            text: __('client.nav_flats',localizations),
+            link: route('client.apartment.index'),
+        },
+        {
+            text: __('client.nav_about',localizations),
+            link: route('client.about.index'),
+        },
+        {
+            text: __('client.nav_blog',localizations),
+            link: route('client.blog.index'),
+        },
+        {
+            text: __('client.nav_contact',localizations),
+            link: route('client.contact.index'),
+        },
+    ];
 
   return (
     <header className="sticky left-0 top-0 w-full z-50 bg-white xl:text-base text-sm shadow">

@@ -11,7 +11,7 @@ import Layout from "../Layouts/Layout";
 
 const Blogs = ({seo}) => {
 
-    const {last_blog,blogs} = usePage().props;
+    const {last_blog,blogs,localizations} = usePage().props;
 
     const renderHTML = (rawHTML) =>
         React.createElement("p", {
@@ -27,7 +27,7 @@ const Blogs = ({seo}) => {
               <div className="wrapper">
                   <svg className="dashedStroke" viewBox="0 0 960 300">
                       <text text-anchor="middle" x="30%" y="50%" className="bold">
-                          ბლოგი
+                          {__('client.blog',localizations)}
                       </text>
                   </svg>
                   <div className="flex items-center justify-start sm:-mt-20 -mt-10 pb-32 flex-col lg:flex-row">
@@ -45,7 +45,7 @@ const Blogs = ({seo}) => {
                               {last_blog.short_description}
                           </p>
                           <Link href={route('client.blog.show',last_blog.slug)}>
-                              <MainButton text="ნახე სრულად" />
+                              <MainButton text={__('client.blog_view',localizations)} />
                           </Link>
                       </div>
                   </div>

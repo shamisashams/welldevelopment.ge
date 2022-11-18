@@ -1,6 +1,6 @@
 import React from "react";
 import { IconDiv } from "./Shared";
-import { navigation } from "./Data";
+//import { navigation } from "./Data";
 //import Icon1 from "../assets/images/icons/1.png";
 //import Icon2 from "../assets/images/icons/2.png";
 //import Icon3 from "../assets/images/icons/3.png";
@@ -11,7 +11,31 @@ import { navigation } from "./Data";
 import { Link, usePage } from '@inertiajs/inertia-react';
 
 const Footer = () => {
-    const {info} = usePage().props;
+    const {info,localizations} = usePage().props;
+
+    const navigation = [
+        {
+            text: __('client.nav_home',localizations),
+            link: route('client.home.index'),
+        },
+        {
+            text: __('client.nav_flats',localizations),
+            link: route('client.apartment.index'),
+        },
+        {
+            text: __('client.nav_about',localizations),
+            link: route('client.about.index'),
+        },
+        {
+            text: __('client.nav_blog',localizations),
+            link: route('client.blog.index'),
+        },
+        {
+            text: __('client.nav_contact',localizations),
+            link: route('client.contact.index'),
+        },
+    ];
+
   return (
     <footer className="bg-custom-slate-300 py-10">
       <div className="wrapper flex items-start justify-between md:flex-row flex-col">
@@ -43,7 +67,7 @@ const Footer = () => {
               );
             })}
           </ul>
-          <p>დაგვიმეგობრდი სოციალურ ქსელებში</p>
+          <p>{__('client.footer_social',localizations)}</p>
           <div className="flex items-center md:justify-end justify-start mt-5">
             <a target="_blank" href={info.facebook}>
               <IconDiv img="/client/assets/images/icons/4.png" />
