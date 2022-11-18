@@ -38,7 +38,7 @@ class SliderController extends Controller
         ]);*/
 
         return view('admin.nowa.views.slider.index', [
-            'sliders' => $this->slideRepository->getData($request, ['translations'])
+            'sliders' => $this->slideRepository->getData($request, ['translations','project.translation'])
         ]);
     }
 

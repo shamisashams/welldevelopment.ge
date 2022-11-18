@@ -34,9 +34,9 @@ class HomeController extends Controller
 
         }
 
-        $sliders = Slider::query()->where("status", 1)->with(['file', 'translations']);
+        $sliders = Slider::query()->where("status", 1)->with(['file', 'translations','project.translation','project.apartments'])->get();
 //        dd($page->file);
-//        dd(App::getLocale());
+       //dd($sliders);
 
         $projects = Project::with(['translation','latestImage'])->get();
 
@@ -51,7 +51,7 @@ class HomeController extends Controller
 
         return Inertia::render('Home', [
             'filter' => $this->getAttributes(),
-            "sliders" => $sliders->get(),
+            "sliders" => $sliders,
             "projects" => $projects,
             "apartments" => $apartments,
             "blogs" => $blogs,

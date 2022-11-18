@@ -134,21 +134,21 @@ const SingleApartment = ({seo}) => {
                                   <p className="opacity-50 mb-2">საძინებელი</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/7.png" alt="" />
-                                      <span>3</span>
+                                      <span>{apartment.bedrooms}</span>
                                   </p>{" "}
                               </div>
                               <div className="mr-4 pr-4 mb-5 border-r">
                                   <p className="opacity-50 mb-2">საძინებელი</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/8.png" alt="" />
-                                      <span>2</span>
+                                      <span>{apartment.bathrooms}</span>
                                   </p>{" "}
                               </div>
                               <div className="mr-4 pr-4 mb-5 border-r">
                                   <p className="opacity-50 mb-2">მთლიანი ფართი</p>
                                   <p>
                                       <img className="inline-block mr-2" src="/client/assets/images/icons/9.png" alt="" />
-                                      <span>124 M</span>
+                                      <span>{apartment.area} M</span>
                                   </p>
                               </div>
                               <div className="mb-5">

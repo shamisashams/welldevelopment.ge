@@ -12,6 +12,10 @@ import { CiSearch } from "react-icons/ci";
 import { Inertia } from "@inertiajs/inertia";
 
 const HeroSlider = () => {
+
+    const {sliders} = usePage().props;
+
+    //console.log(sliders)
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -33,6 +37,11 @@ const HeroSlider = () => {
         Inertia.visit(route('client.apartment.index') + "?" + params.join("&"));
     }
 
+    const renderHTML = (rawHTML) =>
+        React.createElement("p", {
+            dangerouslySetInnerHTML: { __html: rawHTML },
+        });
+
   return (
     <div className="relative">
       <Swiper
@@ -46,13 +55,24 @@ const HeroSlider = () => {
           swiper.navigation.update();
         }}
       >
-        {heroSlider.map((item, index) => {
+        {sliders.map((item, index) => {
+
+            let flats = 0;
+
+            if (item.project){
+                if (item.project.apartments){
+                    item.project.apartments.map((apartment,n) => {
+                        flats += apartment.floors.length;
+                    })
+                }
+            }
+
           return (
             <SwiperSlide key={index} className="!h-auto">
               <div className="xl:pt-20 pt-14 pb-10">
                 <img
                   className="absolute left-0 top-0 w-full h-full object-cover -z-10"
-                  src={item.img}
+                  src={item.file?item.file.full_url:null}
                   alt=""
                 />
                 <div className="wrapper">
@@ -60,7 +80,7 @@ const HeroSlider = () => {
                     <div className="xl:text-5xl sm:text-3xl text-xl bold xl:mb-8 mb-3">
                       {item.title}
                     </div>
-                    <p>{item.para}</p>
+                    {renderHTML(item.description)}
                     <Link
                       className="group flex items-center justify-center bg-white rounded-md w-fit p-3 bold sm:mt-8 mt-4"
                       href="/"
@@ -71,13 +91,13 @@ const HeroSlider = () => {
                       <HiArrowRight className="w-6 h-6" />
                     </Link>
                   </div>
-                  <div className="lg:flex hidden justify-start xl:mt-60 mt-10 ">
+                    {item.project ?<div className="lg:flex hidden justify-start xl:mt-60 mt-10 ">
                     <div className="flex mr-10">
                       <div className="text-right opacity-50 pr-3 border-r border-slate-500">
                         სარეკრეაციო <br /> სივრცე
                       </div>
                       <span className="bold text-3xl pl-3 align-middle">
-                        {item.space} კვ.მ
+                        {item.project.recreational_space} კვ.მ
                       </span>
                     </div>
                     <div className="flex mr-10">
@@ -85,7 +105,7 @@ const HeroSlider = () => {
                         ღია და დახურული <br /> ავტოსადგომი
                       </div>
                       <span className="bold text-3xl pl-3 align-middle">
-                        {item.parking}
+                        {item.project.parking}
                       </span>
                     </div>
                     <div className="flex mr-10">
@@ -93,10 +113,10 @@ const HeroSlider = () => {
                         ხელმისაწვდომი <br /> ბინები
                       </div>
                       <span className="bold text-3xl pl-3 align-middle">
-                        {item.flats}
+                        {flats}
                       </span>
                     </div>
-                  </div>
+                  </div>:null}
                 </div>
               </div>
             </SwiperSlide>

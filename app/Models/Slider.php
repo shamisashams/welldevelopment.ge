@@ -21,7 +21,8 @@ class Slider extends Model
 
     protected $fillable = [
         'status',
-        'youtube_url'
+        'youtube_url',
+        'project_id'
     ];
 
 
@@ -62,5 +63,9 @@ class Slider extends Model
     public function file(): MorphOne
     {
         return $this->morphOne(File::class, 'fileable');
+    }
+
+    public function project(){
+        return $this->belongsTo(Project::class);
     }
 }

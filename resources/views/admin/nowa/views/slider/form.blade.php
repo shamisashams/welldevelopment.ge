@@ -145,6 +145,20 @@
                         </small>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label">@lang('admin.project')</label>
+                        @inject('_project','App\Models\Project')
+                        <select class="form-control" name="project_id">
+                            <option value=""></option>
+                            @foreach($_project->with('translation')->get() as $project)
+                                <option value="{{$project->id}}" {{$project->id == $slider->project_id ? 'selected':''}}>{{$project->title}}</option>
+                            @endforeach
+
+                        </select>
+
+                    </div>
+
                     <div class="form-group">
                         <label class="ckbox">
                             <input type="checkbox" name="status"

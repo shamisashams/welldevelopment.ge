@@ -75,7 +75,7 @@ class ApartmentController extends Controller
         ]);*/
 
         return view('admin.nowa.views.apartment.index', [
-            'data' => $this->apartmentRepository->getData($request, ['translations']),
+            'data' => $this->apartmentRepository->getData($request, ['translations','project.translation']),
         ]);
     }
 

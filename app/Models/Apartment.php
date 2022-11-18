@@ -45,7 +45,10 @@ class Apartment extends Model
         'action',
         'offer',
         'floors',
-        'area'
+        'area',
+        'bedrooms',
+        'bathrooms',
+        'rooms'
     ];
 
     protected $casts = [

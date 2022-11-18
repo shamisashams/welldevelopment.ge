@@ -219,6 +219,30 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label('area',__('admin.bedrooms'),['class' => 'form-label']) !!}
+                        <input type="number" name="bedrooms" class="form-control" placeholder="@lang('admin.bedrooms')" value="{{$model->bedrooms ?? old('bedrooms')}}">
+                        @error('bedrooms')
+                        <small class="text-danger">
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                        </small>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('area',__('admin.bathrooms'),['class' => 'form-label']) !!}
+                        <input type="number" name="bathrooms" class="form-control" placeholder="@lang('admin.bathrooms')" value="{{$model->bathrooms ?? old('bathrooms')}}">
+                        @error('bathrooms')
+                        <small class="text-danger">
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                        </small>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label('area',__('admin.area'),['class' => 'form-label']) !!}
                         <input type="number" name="area" class="form-control" placeholder="@lang('admin.area')" value="{{$model->area ?? old('area')}}">
                         @error('area')
@@ -285,6 +309,9 @@
                     </div>--}}
 
                     {{--@dd($model->floors)--}}
+                    <div>
+                        <h6 class="card-title mb-1">@lang('admin.floors')</h6>
+                    </div>
                     <div class="form-group">
                         <table id="floors">
                             @if($model->floors)

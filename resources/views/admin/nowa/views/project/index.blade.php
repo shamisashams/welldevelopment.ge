@@ -70,7 +70,7 @@
                                     @foreach($data as $item)
                                         <tr>
                                             <th scope="row">{{$item->id}}</th>
-                                            <td></td>
+
 
                                             <td>
 

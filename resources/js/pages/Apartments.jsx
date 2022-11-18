@@ -49,9 +49,9 @@ const Apartments = ({seo}) => {
                                   img={item.latest_image?item.latest_image.full_url:null}
                                   title={item.title}
                                   para={item.short_description}
-                                  bedroom={item.bedroom}
-                                  bathroom={item.bathroom}
-                                  dimension={item.dimension}
+                                  bedroom={item.bedrooms}
+                                  bathroom={item.bathrooms}
+                                  dimension={item.area + ' M'}
                                   active={item.action === 1 ? true:false}
                               />
                           );

@@ -141,4 +141,8 @@ class Project extends Model
     public function district():BelongsTo{
         return $this->belongsTo(District::class);
     }
+
+    public function slide(){
+        return $this->hasOne(Slider::class);
+    }
 }

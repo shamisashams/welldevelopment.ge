@@ -40,6 +40,7 @@
                                 <tr>
                                     <th>@lang('admin.id')</th>
                                     <th>@lang('admin.status')</th>
+                                    <th>@lang('admin.project')</th>
                                     <th>@lang('admin.title')</th>
                                     <th>@lang('admin.actions')</th>
                                 </tr>
@@ -60,6 +61,7 @@
                                             <option value="0" {{Request::get('status') === '0' ? 'selected' :''}}>@lang('admin.not_active')</option>
                                         </select>
                                     </th>
+                                    <th></th>
                                     <th>
                                         <input class="form-control" type="text" name="title" onchange="this.form.submit()"
                                                value="{{Request::get('title')}}"
@@ -70,7 +72,7 @@
                                     @foreach($data as $item)
                                         <tr>
                                             <th scope="row">{{$item->id}}</th>
-                                            <td></td>
+
 
                                             <td>
 
@@ -79,6 +81,9 @@
                                                 @else
                                                     <span class="red-text">@lang('admin.not_active')</span>
                                                 @endif
+                                            </td>
+                                            <td>
+                                                @if($item->project)<a href="{{route('project.edit',$item->project->id)}}">{{$item->project->title}}</a> @endif
                                             </td>
                                             <td>
                                                 <div class="panel panel-primary tabs-style-2">
