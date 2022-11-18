@@ -21,26 +21,24 @@ const Filters = ({appliedFilters}) => {
 
     const [values, setValues] = useState(max ? [min,max] : []);
 
+    const [area, setArea] = useState(max ? [min,max] : []);
+
     function handleChangeMax(e) {
         const key = e.target.name;
-        const value = e.target.value;
+        let value = e.target.value;
+        value = value || 0;
 
-        if(value)
         setValues([document.getElementsByName('min')[0].value || 0,value]);
-        else {
-            setValues([]);
-        }
+
     }
 
     function handleChangeMin(e) {
         const key = e.target.name;
         let value = e.target.value;
         value = value || 0;
-        if(document.getElementsByName('max')[0].value)
-        setValues([value,document.getElementsByName('max')[0].value]);
-        else {
-            setValues([]);
-        }
+
+        setValues([value,document.getElementsByName('max')[0].value || 0]);
+
     }
 
 

@@ -56,6 +56,12 @@ const SingleApartment = ({seo}) => {
             cart = JSON.parse(_cart);
         } else cart = [];
 
+        let product_id = [];
+
+        cart.map((item,index) => {
+            product_id.push(item.product.id)
+        })
+
         // let qty = parseInt(document.getElementById("qty_add").value);
 
         if (cart.length > 0) {
