@@ -20,10 +20,10 @@ import Layout from "../Layouts/Layout";
 
 import { Inertia } from "@inertiajs/inertia";
 
-const Home = ({seo}) => {
+const Home = ({seo, page}) => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const {projects, apartments, blogs, errors, localizations} = usePage().props;
+  const {projects, apartments, blogs, errors, localizations, images} = usePage().props;
 
     const [values, setValues] = useState({
         name: "",
@@ -75,7 +75,7 @@ const Home = ({seo}) => {
                   <div className="wrapper flex items-start justify-start relative z-20 flex-col lg:flex-row">
                       <div className="max-w-xl xl:mr-20 lg:mr-10 -translate-y-20">
                           <div className="overflow-hidden w-full h-fit rounded-3xl mb-10">
-                              <img className="w-full h-full object-cover" src="/client/assets/images/other/1.png" alt="" />
+                              <img className="w-full h-full object-cover" src={images[0]} alt="" />
                           </div>
                           <div className="flex">
                               <div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0 mr-3">

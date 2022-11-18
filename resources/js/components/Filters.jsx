@@ -4,7 +4,7 @@ import { CiSearch } from "react-icons/ci";
 import { Link, usePage } from '@inertiajs/inertia-react'
 
 const Filters = ({appliedFilters}) => {
-    const { filter } = usePage().props;
+    const { filter, localizations } = usePage().props;
 
 
 
@@ -134,7 +134,7 @@ const Filters = ({appliedFilters}) => {
             />
           </svg>
         }
-        title="აირჩიე ქალაქი"
+        title={__('client.filter_city',localizations)}
         subtitle="თბილისი"
       >
         <div className="relative text-sm">
@@ -269,7 +269,7 @@ const Filters = ({appliedFilters}) => {
             </g>
           </svg>
         }
-        title="მშენებლობის სტატუსი"
+        title={__('client.filter_status',localizations)}
         subtitle="დასრულებული"
       >
         <div className="max-h-48 overflow-y-scroll scrollbar py-2">
@@ -311,7 +311,7 @@ const Filters = ({appliedFilters}) => {
             </g>
           </svg>
         }
-        title="ჩაბარების პირობა"
+        title={__('client.filter_condition',localizations)}
         subtitle="მწვანე კარკასი"
       >
         <div className="max-h-48 overflow-y-scroll scrollbar py-2">
@@ -351,24 +351,24 @@ const Filters = ({appliedFilters}) => {
             />
           </svg>
         }
-        title="აირჩიე ფართობი"
+        title={__('client.filter_area',localizations)}
         subtitle="50 - 250 კვ. მ"
       >
         <div className="py-2">
           <div className="flex">
             <div className="mr-3">
-              <p>მინ.</p>
+              <p>{__('client.filter_min',localizations)}</p>
               <input name={'min'} className="mt-2" type="text" placeholder="40 კვ. მ" onChange={handleChangeMin} value={values.length > 0 ? values[0] : ''} />
             </div>
             <div>
-              <p>მაქს.</p>
+              <p>{__('client.filter_max',localizations)}</p>
               <input name={'max'} className="mt-2" type="text" placeholder="350 კვ. მ" onChange={handleChangeMax} value={values.length > 0 ? values[1] : ''} />
             </div>
           </div>
           <div className="flex justify-between">
-            <button onClick={clearArea} className="py-3 ">წაშლა</button>
+            <button onClick={clearArea} className="py-3 ">{__('client.filter_erase',localizations)}</button>
             <button onClick={handleCommit} className="px-4 py-3 bg-custom-blue rounded-lg text-white">
-              არჩევა
+                {__('client.filter_select',localizations)}
             </button>
           </div>
         </div>

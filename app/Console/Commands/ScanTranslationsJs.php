@@ -127,6 +127,6 @@ class ScanTranslationsJs extends Command
 
         $it = new \RecursiveDirectoryIterator($path);
         $it = new \RecursiveIteratorIterator($it);
-        yield from new \RegexIterator($it, '/\.php$|.js$/', \RegexIterator::MATCH);
+        yield from new \RegexIterator($it, '/\.php$|.js$|.jsx$/', \RegexIterator::MATCH);
     }
 }

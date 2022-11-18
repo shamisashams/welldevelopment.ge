@@ -13,7 +13,7 @@ import { Inertia } from "@inertiajs/inertia";
 
 const HeroSlider = () => {
 
-    const {sliders} = usePage().props;
+    const {sliders,localizations} = usePage().props;
 
     //console.log(sliders)
   const prevRef = useRef(null);
@@ -41,6 +41,8 @@ const HeroSlider = () => {
         React.createElement("p", {
             dangerouslySetInnerHTML: { __html: rawHTML },
         });
+
+
 
   return (
     <div className="relative">
@@ -86,7 +88,7 @@ const HeroSlider = () => {
                       href="/"
                     >
                       <span className="group-hover:max-w-sm max-w-0 overflow-hidden whitespace-nowrap group-hover:pr-2 transition-all duration-300">
-                        ნახე მეტი
+                        {__('client.view_more',localizations)}
                       </span>
                       <HiArrowRight className="w-6 h-6" />
                     </Link>
@@ -94,7 +96,7 @@ const HeroSlider = () => {
                     {item.project ?<div className="lg:flex hidden justify-start xl:mt-60 mt-10 ">
                     <div className="flex mr-10">
                       <div className="text-right opacity-50 pr-3 border-r border-slate-500">
-                        სარეკრეაციო <br /> სივრცე
+                          {renderHTML(__('client.slide_recreational_space',localizations).newLineToBr())}
                       </div>
                       <span className="bold text-3xl pl-3 align-middle">
                         {item.project.recreational_space} კვ.მ
@@ -102,7 +104,7 @@ const HeroSlider = () => {
                     </div>
                     <div className="flex mr-10">
                       <div className="text-right opacity-50 pr-3 border-r  border-slate-500">
-                        ღია და დახურული <br /> ავტოსადგომი
+                          {renderHTML(__('client.slide_parking',localizations).newLineToBr())}
                       </div>
                       <span className="bold text-3xl pl-3 align-middle">
                         {item.project.parking}
@@ -110,7 +112,7 @@ const HeroSlider = () => {
                     </div>
                     <div className="flex mr-10">
                       <div className="text-right opacity-50 pr-3 border-r  border-slate-500">
-                        ხელმისაწვდომი <br /> ბინები
+                          {renderHTML(__('client.slide_available_flats',localizations).newLineToBr())}
                       </div>
                       <span className="bold text-3xl pl-3 align-middle">
                         {flats}

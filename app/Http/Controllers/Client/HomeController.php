@@ -22,7 +22,7 @@ class HomeController extends Controller
     {
 
 
-        $page = Page::where('key', 'home')->firstOrFail();
+        $page = Page::with(['sections.file'])->where('key', 'home')->firstOrFail();
 
         $images = [];
         foreach ($page->sections as $sections){
@@ -34,7 +34,7 @@ class HomeController extends Controller
 
         }
 
-        $sliders = Slider::query()->where("status", 1)->with(['file', 'translations','project.translation','project.apartments'])->get();
+        $sliders = Slider::query()->where("status", 1)->with(['file', 'translations','project.translation','project.apartments.translation'])->get();
 //        dd($page->file);
        //dd($sliders);
 
