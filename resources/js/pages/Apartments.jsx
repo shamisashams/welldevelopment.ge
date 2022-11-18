@@ -11,6 +11,20 @@ const Apartments = ({seo}) => {
 
     const {apartments} = usePage().props;
 
+    let _cart = localStorage.getItem("welldevelopment_favorite");
+    let cart;
+    if (_cart !== null) {
+        cart = JSON.parse(_cart);
+    } else cart = [];
+
+    let product_id = [];
+
+    cart.map((item,index) => {
+        product_id.push(item.product.id)
+    })
+
+    console.log(product_id)
+
     let appliedFilters = {};
     let urlParams = new URLSearchParams(window.location.search);
 
@@ -42,6 +56,8 @@ const Apartments = ({seo}) => {
               <section className="wrapper py-10">
                   <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-10 gap-x-5 pb-5">
                       {apartments.data.map((item, index) => {
+                          let favorite = false;
+                          if(product_id.includes(item.id)) favorite = true;
                           return (
                               <ProjectBox
                                   key={index}
@@ -53,6 +69,7 @@ const Apartments = ({seo}) => {
                                   bathroom={item.bathrooms}
                                   dimension={item.area + ' M'}
                                   active={item.action === 1 ? true:false}
+                                  favorite={favorite}
                               />
                           );
                       })}

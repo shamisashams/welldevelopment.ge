@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
 export const ProjectBox = (props) => {
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(props.favorite);
 
     const addToFavorite = function (product) {
         //localStorage.removeItem('cart')
@@ -67,9 +67,10 @@ export const ProjectBox = (props) => {
         )}
         <button
           onClick={(event) => {
-              //event.stopPropagation();
+              //event.stopImmediatePropagation()
               setFavorite(!favorite);
               addToFavorite(props.product)
+
           }}
           className={`absolute top-3 right-3 rounded-xl  shadow-md flex items-center justify-center w-10 h-10 bg-white  ${
             favorite ? "text-red-500" : "text-gray-400"

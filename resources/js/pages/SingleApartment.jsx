@@ -18,13 +18,30 @@ import { Link, usePage } from '@inertiajs/inertia-react'
 import { Inertia } from "@inertiajs/inertia";
 
 const SingleApartment = ({seo}) => {
-  const [favorite, setFavorite] = useState(false);
+
   const imgs = ["/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png"];
   const [showPopup, setShowPopup] = useState(false);
 
   const {project_apartments,similar_apartments, apartment} = usePage().props;
 
+
+
   console.log(project_apartments,similar_apartments,apartment)
+
+
+    let _cart = localStorage.getItem("welldevelopment_favorite");
+    let cart;
+    if (_cart !== null) {
+        cart = JSON.parse(_cart);
+    } else cart = [];
+
+    let product_id = [];
+
+    cart.map((item,index) => {
+        product_id.push(item.product.id)
+    })
+
+    const [favorite, setFavorite] = useState(product_id.includes(apartment.id));
 
     const renderHTML = (rawHTML) =>
         React.createElement("p", {

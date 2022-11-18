@@ -47,6 +47,7 @@ const Favorites = ({seo}) => {
                               dimension={item.dimension}
                               active={item.action === 1 ? true:false}
                               product={item}
+                              favorite={true}
                           />
                       );
                   })}
