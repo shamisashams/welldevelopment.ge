@@ -9,7 +9,7 @@ import {Inertia} from "@inertiajs/inertia";
 
 const Apartments = ({seo}) => {
 
-    const {apartments} = usePage().props;
+    const {apartments,localizations} = usePage().props;
 
     let _cart = localStorage.getItem("welldevelopment_favorite");
     let cart;
@@ -49,7 +49,7 @@ const Apartments = ({seo}) => {
                   <div className="wrapper items-start flex py-5 flex-col xl:flex-row">
                       <Filters appliedFilters={appliedFilters} />
                       <button onClick={search} className="bg-custom-blue shadow-lg shadow-custom-blue/[0.5] text-white py-3 xl:w-1/4 w-full px-3 rounded-lg">
-                          ძიება საიტზე
+                          {__('client.search',localizations)}
                       </button>
                   </div>
               </section>
