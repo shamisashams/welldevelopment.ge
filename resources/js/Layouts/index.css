@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "mtav";
-  src: url(/client/assets/fonts/AS-Grammatika-Bold_Mtav.ttf);
+    font-family: "mtav";
+    src: url(/client/assets/fonts/AS-Grammatika-Bold_Mtav.ttf);
 }
 @font-face {
-  font-family: "noto";
-  src: url(/client/assets/fonts/NotoSansGeorgian-Regular.ttf);
+    font-family: "noto";
+    src: url(/client/assets/fonts/NotoSansGeorgian-Regular.ttf);
 }
 
 /* general */
@@ -16,66 +16,66 @@
 *,
 *::after,
 *::before {
-  font-family: "noto";
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+    font-family: "noto";
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 *::after,
 *::before {
-  position: absolute;
-  content: "";
+    position: absolute;
+    content: "";
 }
 ::selection {
-  color: #0084d1;
-  background: #fff;
+    color: #0084d1;
+    background: #fff;
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+    width: 5px;
 }
 .scrollbar::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+    width: 3px;
+    height: 3px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #fff;
+    background: #fff;
 }
 /* Handle */
 .scrollbar-track {
-  background: transparent !important;
+    background: transparent !important;
 }
 .scrollbar-track-y {
-  width: 5px !important;
+    width: 5px !important;
 }
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #e0e0e0 !important;
+    background: #e0e0e0 !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0084d1 !important;
-  border-radius: 2px;
+    background: #0084d1 !important;
+    border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0065a0;
+    background: #0065a0;
 }
 html {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 body {
-  font-family: "noto";
-  position: relative;
-  font-weight: 400;
-  line-height: 1.3;
-  color: #000;
-  background: #fff;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  font-size: 16px;
-  cursor: default !important;
+    font-family: "noto";
+    position: relative;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #000;
+    background: #fff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    cursor: default !important;
 }
 input,
 select,
@@ -83,134 +83,137 @@ textarea,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: none;
+    outline: none;
 }
 input,
 textarea {
-  background-color: #f5f5f5;
-  height: 31px;
-  width: 100%;
-  padding-left: 15px;
-  transition: 0.5s;
-  margin-bottom: 20px;
-  border-radius: 12px;
+    background-color: #f5f5f5;
+    height: 31px;
+    width: 100%;
+    padding-left: 15px;
+    transition: 0.5s;
+    margin-bottom: 20px;
+    border-radius: 12px;
 }
 textarea {
-  height: 79px;
-  margin-bottom: 30px;
-  padding-top: 10px;
+    height: 79px;
+    margin-bottom: 30px;
+    padding-top: 10px;
 }
 input:focus,
 textarea:focus {
-  box-shadow: 0 0 2px 2px #0084d11f;
+    box-shadow: 0 0 2px 2px #0084d11f;
 }
 input[type="checkbox"] {
-  display: none;
+    display: none;
 }
 input[type="checkbox"] + label {
-  width: 20px;
-  height: 20px;
-  border: #707b87c0 1px solid;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  cursor: pointer;
-  margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border: #707b87c0 1px solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-right: 10px;
 }
 input[type="checkbox"] + label div {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  background-color: transparent;
-  transition: 0.3s;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: transparent;
+    transition: 0.3s;
 }
 input[type="checkbox"]:checked + label div {
-  background-color: #0084d1;
+    background-color: #0084d1;
+}
+input[type="checkbox"].checked + label div {
+    background-color: #0084d1;
 }
 h1 {
-  font-weight: 600;
+    font-weight: 600;
 }
 ul {
-  list-style: none;
+    list-style: none;
 }
 a {
-  text-decoration: none;
-  color: inherit;
-  font-family: inherit;
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
 }
 span {
-  font-family: inherit;
+    font-family: inherit;
 }
 button {
-  cursor: pointer;
-  outline: none;
+    cursor: pointer;
+    outline: none;
 }
 img {
-  height: auto;
-  max-width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 .wrapper {
-  width: 1600px;
-  margin: auto;
+    width: 1600px;
+    margin: auto;
 }
 .bold {
-  font-family: "mtav";
+    font-family: "mtav";
 }
 .menuBtn .span {
-  height: 3px;
-  width: 30px;
-  margin: 4px 0;
-  background-color: #000;
-  transition: 0.3s;
+    height: 3px;
+    width: 30px;
+    margin: 4px 0;
+    background-color: #000;
+    transition: 0.3s;
 }
 .menuBtn.clicked .span:first-child {
-  rotate: -45deg;
-  translate: 0 7px;
+    rotate: -45deg;
+    translate: 0 7px;
 }
 .menuBtn.clicked .span:last-child {
-  rotate: -135deg;
-  translate: 0 -7px;
+    rotate: -135deg;
+    translate: 0 -7px;
 }
 .menuBtn.clicked .span:nth-child(2) {
-  scale: 0;
+    scale: 0;
 }
 .swiper-pagination-bullet-active {
-  background-color: #0084d1 !important;
+    background-color: #0084d1 !important;
 }
 .swiper-scrollbar-drag {
-  background: rgba(255, 255, 255, 0.486) !important;
+    background: rgba(255, 255, 255, 0.486) !important;
 }
 .swiper-button-prev,
 .swiper-button-next {
-  display: none !important;
+    display: none !important;
 }
 .swiper-button-disabled {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 .dashedStroke {
-  display: block;
-  font: 100px "Montserrat";
-  width: 960px;
-  height: 300px;
-  fill: none;
-  stroke: #0084d1;
-  stroke-width: 1px;
-  stroke-dasharray: 3;
-  stroke-dashoffset: 0;
+    display: block;
+    font: 100px "Montserrat";
+    width: 960px;
+    height: 300px;
+    fill: none;
+    stroke: #0084d1;
+    stroke-width: 1px;
+    stroke-dasharray: 3;
+    stroke-dashoffset: 0;
 }
 
 @media screen and (max-width: 1650px) {
-  .wrapper {
-    width: 96%;
-  }
+    .wrapper {
+        width: 96%;
+    }
 }
 @media screen and (max-width: 635px) {
-  .dashedStroke {
-    width: 524px;
-    height: 156px;
-  }
+    .dashedStroke {
+        width: 524px;
+        height: 156px;
+    }
 }
 
 /* end of general */
@@ -218,53 +221,53 @@ img {
 /* navbar start  */
 
 .navLink {
-  position: relative;
+    position: relative;
 }
 .navLink::after {
-  width: 40px;
-  height: 3px;
-  left: 50%;
-  bottom: -10px;
-  background-color: #0084d1;
-  transition: 0.3s;
-  transform: translateX(-50%) scaleX(0);
-  transform-origin: center;
-  border-radius: 2px;
+    width: 40px;
+    height: 3px;
+    left: 50%;
+    bottom: -10px;
+    background-color: #0084d1;
+    transition: 0.3s;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    border-radius: 2px;
 }
 .navLink:hover::after {
-  transform: translateX(-50%) scaleX(1);
+    transform: translateX(-50%) scaleX(1);
 }
 .navLink.active::after {
-  transform: translateX(-50%) scaleX(1);
+    transform: translateX(-50%) scaleX(1);
 }
 @media screen and (max-width: 1024px) {
-  .navList {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-100%);
-  }
-  .navList.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .navList li {
-    margin-bottom: 20px;
-  }
-  .navLink::after {
-    bottom: -7px;
-  }
+    .navList {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-100%);
+    }
+    .navList.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .navList li {
+        margin-bottom: 20px;
+    }
+    .navLink::after {
+        bottom: -7px;
+    }
 }
 
 /* navbar end  */
@@ -272,7 +275,7 @@ img {
 /* hero slider start */
 
 .swiper-wrapper {
-  justify-content: stretch;
+    justify-content: stretch;
 }
 
 /* hero slider end */

@@ -7,7 +7,6 @@ import { BiChevronLeft } from "react-icons/bi";
 const Filters = ({ appliedFilters }) => {
     const { filter, localizations } = usePage().props;
 
-    console.log(filter);
     let min, max;
 
     if (appliedFilters.hasOwnProperty("area")) {
@@ -51,9 +50,10 @@ const Filters = ({ appliedFilters }) => {
         }
         return arr;
     }
-
+    let checked;
     const handleFilterClick = function (event, code, value) {
         //Inertia.visit('?brand=12');
+        event.target.classList.toggle("checked");
 
         if (event.target.checked === true) {
             if (appliedFilters.hasOwnProperty(code)) {
@@ -64,13 +64,10 @@ const Filters = ({ appliedFilters }) => {
                 removeA(appliedFilters[code], value.toString());
             else delete appliedFilters[code];
         }
-
-        console.log(appliedFilters);
+        console.log(event.target.checked);
     };
 
     const handleCommit = () => {
-        console.log(appliedFilters);
-
         if (values.length > 0) {
             appliedFilters["area"] = values;
         } else delete appliedFilters["area"];
@@ -82,7 +79,8 @@ const Filters = ({ appliedFilters }) => {
     }
     const [cityIndex, setCityIndex] = useState(0);
     const [showDistricts, setShowDistrict] = useState(false);
-    const [checked, setChecked] = useState();
+    // const [checked, setChecked] = useState();
+
     return (
         <div className="flex items-start lg:flex-row flex-col">
             <SelectFilter
@@ -117,9 +115,9 @@ const Filters = ({ appliedFilters }) => {
                                         item.id.toString()
                                     )
                                 ) {
-                                    () => setChecked(true);
-                                } else () => setChecked(false);
-                            } else () => setChecked(false);
+                                    checked = true;
+                                } else checked = false;
+                            } else checked = false;
                             return (
                                 <div
                                     key={index}
@@ -174,9 +172,9 @@ const Filters = ({ appliedFilters }) => {
                                                     "district"
                                                 ].includes(item.id.toString())
                                             ) {
-                                                () => setChecked(true);
-                                            } else () => setChecked(false);
-                                        } else () => setChecked(false);
+                                                checked = true;
+                                            } else checked = false;
+                                        } else checked = false;
                                         return (
                                             <div
                                                 key={index}
@@ -191,6 +189,9 @@ const Filters = ({ appliedFilters }) => {
                                                         );
                                                     }}
                                                     checked={checked}
+                                                    className={
+                                                        checked ? "checked" : ""
+                                                    }
                                                     type="checkbox"
                                                     id={`districtInput-${item.id}`}
                                                 />
@@ -339,9 +340,10 @@ const Filters = ({ appliedFilters }) => {
                                     item.id.toString()
                                 )
                             ) {
-                                () => setChecked(true);
-                            } else () => setChecked(false);
-                        } else () => setChecked(false);
+                                checked = true;
+                            } else checked = false;
+                        } else checked = false;
+
                         return (
                             <div
                                 key={index}
@@ -354,7 +356,6 @@ const Filters = ({ appliedFilters }) => {
                                             "status",
                                             item.id
                                         );
-                                        console.log(checked);
                                     }}
                                     checked={checked}
                                     type="checkbox"
@@ -404,9 +405,9 @@ const Filters = ({ appliedFilters }) => {
                                     item.id.toString()
                                 )
                             ) {
-                                () => setChecked(true);
-                            } else () => setChecked(false);
-                        } else () => setChecked(false);
+                                checked = true;
+                            } else checked = false;
+                        } else checked = false;
                         return (
                             <div
                                 key={index}
