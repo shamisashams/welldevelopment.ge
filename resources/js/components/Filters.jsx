@@ -7,7 +7,6 @@ import { BiChevronLeft } from "react-icons/bi";
 const Filters = ({ appliedFilters }) => {
     const { filter, localizations } = usePage().props;
 
-    console.log(filter);
     let min, max;
 
     if (appliedFilters.hasOwnProperty("area")) {
@@ -51,9 +50,10 @@ const Filters = ({ appliedFilters }) => {
         }
         return arr;
     }
-
+    let checked;
     const handleFilterClick = function (event, code, value) {
         //Inertia.visit('?brand=12');
+        event.target.classList.toggle("checked");
 
         if (event.target.checked === true) {
             if (appliedFilters.hasOwnProperty(code)) {
@@ -64,13 +64,10 @@ const Filters = ({ appliedFilters }) => {
                 removeA(appliedFilters[code], value.toString());
             else delete appliedFilters[code];
         }
-
-        console.log(appliedFilters);
+        console.log(event.target.checked);
     };
 
     const handleCommit = () => {
-        console.log(appliedFilters);
-
         if (values.length > 0) {
             appliedFilters["area"] = values;
         } else delete appliedFilters["area"];
@@ -96,14 +93,12 @@ const Filters = ({ appliedFilters }) => {
         setFilteredList(updatedList);
     };
 
-
-
-
     const [cityIndex, setCityIndex] = useState(0);
     const [showDistricts, setShowDistrict] = useState(false);
-    const [checked, setChecked] = useState();
 
-    const [filteredList_d, setFilteredList_d] = new useState(filter.cities[cityIndex].districts);
+    const [filteredList_d, setFilteredList_d] = new useState(
+        filter.cities[cityIndex].districts
+    );
 
     const filterBySearch_d = (event) => {
         // Access input value
@@ -140,7 +135,13 @@ const Filters = ({ appliedFilters }) => {
             >
                 <div className="relative text-sm xl:py-4 xl:px-6">
                     <div className="relative ">
-                        <input className="pl-7" type="text" name="" id="" onChange={filterBySearch} />
+                        <input
+                            className="pl-7"
+                            type="text"
+                            name=""
+                            id=""
+                            onChange={filterBySearch}
+                        />
                         <CiSearch className="absolute left-2 top-2 w-4 h-4" />
                     </div>
                     <div className="max-h-48 overflow-y-scroll scrollbar">
@@ -151,9 +152,9 @@ const Filters = ({ appliedFilters }) => {
                                         item.id.toString()
                                     )
                                 ) {
-                                    () => setChecked(true);
-                                } else () => setChecked(false);
-                            } else () => setChecked(false);
+                                    checked = true;
+                                } else checked = false;
+                            } else checked = false;
                             return (
                                 <div
                                     key={index}
@@ -193,55 +194,62 @@ const Filters = ({ appliedFilters }) => {
                         } origin-top absolute left-0 top-0 w-full rounded-xl bg-white xl:shadow-lg transition-all duration-300 xl:py-4 xl:px-6 w-full text-sm z-40 overflow-hidden`}
                     >
                         <div className="relative">
-                            <input className="pl-7" type="text" name="" id="" onChange={filterBySearch_d} />
+                            <input
+                                className="pl-7"
+                                type="text"
+                                name=""
+                                id=""
+                                onChange={filterBySearch_d}
+                            />
                             <CiSearch className="absolute left-2 top-2 w-4 h-4" />
                             <div className="max-h-48 overflow-y-scroll scrollbar">
-                                {filteredList_d.map(
-                                    (item, index) => {
+                                {filteredList_d.map((item, index) => {
+                                    if (
+                                        appliedFilters.hasOwnProperty(
+                                            "district"
+                                        )
+                                    ) {
                                         if (
-                                            appliedFilters.hasOwnProperty(
-                                                "district"
+                                            appliedFilters["district"].includes(
+                                                item.id.toString()
                                             )
                                         ) {
-                                            if (
-                                                appliedFilters[
-                                                    "district"
-                                                ].includes(item.id.toString())
-                                            ) {
-                                                () => setChecked(true);
-                                            } else () => setChecked(false);
-                                        } else () => setChecked(false);
-                                        return (
-                                            <div
-                                                key={index}
-                                                className="flex justify-start items-center mb-3"
+                                            checked = true;
+                                        } else checked = false;
+                                    } else checked = false;
+                                    return (
+                                        <div
+                                            key={index}
+                                            className="flex justify-start items-center mb-3"
+                                        >
+                                            <input
+                                                onClick={(event) => {
+                                                    handleFilterClick(
+                                                        event,
+                                                        "district",
+                                                        item.id
+                                                    );
+                                                }}
+                                                checked={checked}
+                                                className={
+                                                    checked ? "checked" : ""
+                                                }
+                                                type="checkbox"
+                                                id={`districtInput-${item.id}`}
+                                            />
+                                            <label
+                                                htmlFor={`districtInput-${item.id}`}
                                             >
-                                                <input
-                                                    onClick={(event) => {
-                                                        handleFilterClick(
-                                                            event,
-                                                            "district",
-                                                            item.id
-                                                        );
-                                                    }}
-                                                    checked={checked}
-                                                    type="checkbox"
-                                                    id={`districtInput-${item.id}`}
-                                                />
-                                                <label
-                                                    htmlFor={`districtInput-${item.id}`}
-                                                >
-                                                    <div></div>
-                                                </label>
-                                                <label
-                                                    htmlFor={`districtInput-${item.id}`}
-                                                >
-                                                    {item.title}
-                                                </label>
-                                            </div>
-                                        );
-                                    }
-                                )}
+                                                <div></div>
+                                            </label>
+                                            <label
+                                                htmlFor={`districtInput-${item.id}`}
+                                            >
+                                                {item.title}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
                             </div>
                             <div className="flex justify-between items-center text-sm mt-4">
                                 <button onClick={() => setShowDistrict(false)}>
@@ -373,9 +381,10 @@ const Filters = ({ appliedFilters }) => {
                                     item.id.toString()
                                 )
                             ) {
-                                () => setChecked(true);
-                            } else () => setChecked(false);
-                        } else () => setChecked(false);
+                                checked = true;
+                            } else checked = false;
+                        } else checked = false;
+
                         return (
                             <div
                                 key={index}
@@ -388,7 +397,6 @@ const Filters = ({ appliedFilters }) => {
                                             "status",
                                             item.id
                                         );
-                                        console.log(checked);
                                     }}
                                     checked={checked}
                                     type="checkbox"
@@ -438,9 +446,9 @@ const Filters = ({ appliedFilters }) => {
                                     item.id.toString()
                                 )
                             ) {
-                                () => setChecked(true);
-                            } else () => setChecked(false);
-                        } else () => setChecked(false);
+                                checked = true;
+                            } else checked = false;
+                        } else checked = false;
                         return (
                             <div
                                 key={index}
