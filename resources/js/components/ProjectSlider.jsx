@@ -46,6 +46,17 @@ export const ProjectSlider1 = ({items}) => {
 };
 
 export const ProjectSlider2 = ({items}) => {
+    let _cart = localStorage.getItem("welldevelopment_favorite");
+    let cart;
+    if (_cart !== null) {
+        cart = JSON.parse(_cart);
+    } else cart = [];
+
+    let product_id = [];
+
+    cart.map((item,index) => {
+        product_id.push(item.product.id)
+    })
   return (
     <div>
       <Swiper
@@ -73,6 +84,8 @@ export const ProjectSlider2 = ({items}) => {
         }}
       >
         {items.map((item, index) => {
+            let favorite = false;
+            if(product_id.includes(item.id)) favorite = true;
           return (
             <SwiperSlide key={index} className="pb-20 !h-auto">
               <ProjectBox
@@ -80,11 +93,12 @@ export const ProjectSlider2 = ({items}) => {
                 img={item.latest_image?item.latest_image.full_url:null}
                 title={item.title}
                 para={item.short_description}
-                bedroom={item.bedroom}
-                bathroom={item.bathroom}
-                dimension={item.dimension}
+                bedroom={item.bedrooms}
+                bathroom={item.bathrooms}
+                dimension={item.area + ' M'}
                 active={item.action === 1 ? true:false}
                 product={item}
+                favorite={favorite}
               />
             </SwiperSlide>
           );

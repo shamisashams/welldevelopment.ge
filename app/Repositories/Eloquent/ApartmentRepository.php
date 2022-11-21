@@ -39,7 +39,7 @@ class ApartmentRepository extends BaseRepository
 
 
 
-    public function getAll(){
+    public function getAll($offer = null){
 
 
         //dd(request()->post());
@@ -51,6 +51,9 @@ class ApartmentRepository extends BaseRepository
             ->leftJoin('apartment_attribute_values','apartment_attribute_values.apartment_id','apartments.id');
 
 
+        if ($offer !== null){
+            $query->where('offer',$offer);
+        }
 
         if(isset($params['term'])){
             $query->where(function ($tQ) use ($params){

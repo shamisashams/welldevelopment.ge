@@ -242,6 +242,10 @@
                     </div>
                     @foreach($page->sections as $item)
                         <div class="form-group">
+                            <label class="form-label">@lang('admin.link')</label>
+                            <input class="form-control" type="text" name="link[{{$item->id}}]" value="{{$item->link}}">
+                        </div>
+                        <div class="form-group">
 
                             <input type="file" class="dropify" name="image[{{$item->id}}]" data-default-file="{{($item->file) ? asset($item->file->getFileUrlAttribute()) : ''}}" data-height="200"  />
 

@@ -22,7 +22,7 @@ const SingleApartment = ({seo}) => {
   const imgs = ["/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png", "/client/assets/images/projects/4.png"];
   const [showPopup, setShowPopup] = useState(false);
 
-  const {project_apartments,similar_apartments, apartment,localizations} = usePage().props;
+  const {project_apartments,similar_apartments, apartment,localizations, info} = usePage().props;
 
 
 
@@ -212,7 +212,7 @@ const SingleApartment = ({seo}) => {
                               <CallButton onClick={() => setShowPopup(true)} />
                           </button>
                           <p className="mt-5">
-                              {__('client.or_contact_us',localizations)}: <a href="tel:+995579904804">+995 579 904 804</a>
+                              {__('client.or_contact_us',localizations)}: <a href="tel:+995579904804">{info.phone}</a>
                           </p>
                       </div>
                   </section>

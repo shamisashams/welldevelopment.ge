@@ -109,8 +109,9 @@ Route::prefix('{locale?}')
         Route::get('projects', [\App\Http\Controllers\Client\ProjectController::class, 'index'])->name('client.project.index');
         Route::get('project/{project}', [\App\Http\Controllers\Client\ProjectController::class, 'show'])->name('client.project.show');
 
-        Route::get('apartment', [\App\Http\Controllers\Client\ApartmentController::class, 'index'])->name('client.apartment.index');
+        Route::get('apartments', [\App\Http\Controllers\Client\ApartmentController::class, 'index'])->name('client.apartment.index');
         Route::get('apartment/{apartment}', [\App\Http\Controllers\Client\ApartmentController::class, 'show'])->name('client.apartment.show');
+        Route::get('apartments/offer', [\App\Http\Controllers\Client\ApartmentController::class, 'offer'])->name('client.apartment.offer');
 
         Route::get('favorites',[\App\Http\Controllers\Client\FavoriteController::class,'index'])->name('client.favorite.index');
 

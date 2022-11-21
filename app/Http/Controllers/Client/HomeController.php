@@ -41,7 +41,7 @@ class HomeController extends Controller
         $projects = Project::with(['translation','latestImage'])->get();
 
 
-        $apartments = Apartment::with(['translation','latestImage'])->where('offer',1)->limit(8)->get();
+        $apartments = Apartment::with(['translation','latestImage'])->where('offer',1)->inRandomOrder()->limit(8)->get();
 
         $blogs = Blog::with(['translation','latestImage'])->limit(8)->inRandomOrder()->get();
 

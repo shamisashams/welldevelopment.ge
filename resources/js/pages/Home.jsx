@@ -65,7 +65,7 @@ const Home = ({seo, page}) => {
                   <div className="bold  text-2xl mb-6">{__('client.current_offers',localizations)}</div>
                   <ProjectSlider2 items={apartments} />
                   <div className="text-right py-5">
-                      <Link href="/">
+                      <Link href={route('client.apartment.offer')}>
                           <MainButton text={__('client.all_offers',localizations)} />
                       </Link>
                   </div>
@@ -87,9 +87,9 @@ const Home = ({seo, page}) => {
                                   <p className="opacity-70 my-1 text-sm">
                                       {__('client.home_about_t',localizations)}
                                   </p>
-                                  <Link href="/" className="text-custom-blue underline">
+                                  <a target="_blank" href={page.sections[0].link} className="text-custom-blue underline">
                                       {__('client.home_about_video',localizations)}
-                                  </Link>
+                                  </a>
                               </div>
                           </div>
                       </div>
@@ -100,7 +100,7 @@ const Home = ({seo, page}) => {
                           <p className="opacity-70 mb-7">
                               {__('client.home_about_t1',localizations)}
                           </p>
-                          <Link href="/">
+                          <Link href={route('client.about.index')}>
                               <MainButton text={__('client.learn_more',localizations)} />
                           </Link>
                           <div className="flex mt-12 mb-8">

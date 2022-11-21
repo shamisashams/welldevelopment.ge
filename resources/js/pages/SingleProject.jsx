@@ -16,7 +16,7 @@ import { Link, usePage } from '@inertiajs/inertia-react'
 const SingleProject = ({seo}) => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const {project, related_projects, project_apartments, localizations} = usePage().props;
+  const {project, related_projects, project_apartments, localizations, flat_count, info} = usePage().props;
 
     const renderHTML = (rawHTML) =>
         React.createElement("p", {
@@ -85,7 +85,7 @@ const SingleProject = ({seo}) => {
                                   <div className="lg:text-right opacity-50 pr-3 border-r  border-slate-500">
                                       {__('client.available_flats',localizations)}
                                   </div>
-                                  <span className="bold text-xl pl-3 align-middle">{project_apartments.total}</span>
+                                  <span className="bold text-xl pl-3 align-middle">{flat_count}</span>
                               </p>
                           </div>
                       </div>
@@ -105,7 +105,7 @@ const SingleProject = ({seo}) => {
                           })}
                           <CallButton onClick={() => setShowPopup(true)} />
                           <p className="mt-5">
-                              {__('client.or_contact_us',localizations)}: <a href="tel:+995579904804">+995 579 904 804</a>
+                              {__('client.or_contact_us',localizations)}: <a href="tel:+995579904804">{info.phone}</a>
                           </p>
                       </div>
                   </section>

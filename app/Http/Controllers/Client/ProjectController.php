@@ -64,14 +64,16 @@ class ProjectController extends Controller
         $project_apartments = $project->apartments()->with(['translation','latestImage'])->paginate(6);
 
 
+        $flat_count = $project->apartments()->selectRaw('SUM(JSON_LENGTH(floors)) as flat_count')->first();
 
+        //dd($flat_count['flat_count']);
         //dd($project);
         $related_project = Project::query()->where('id','!=',$project->id)->where('status',1)->with(['translation','latestImage'])->inRandomOrder()->get();
 
 
 
         return Inertia::render('SingleProject',[
-            'product' => null,
+            'flat_count' => $flat_count['flat_count'],
             'category_path' => null,
             'similar_products' => null,
             'product_images' => null,

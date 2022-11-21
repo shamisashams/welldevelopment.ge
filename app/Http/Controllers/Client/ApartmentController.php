@@ -121,7 +121,7 @@ class ApartmentController extends Controller
         $files = [];
         if($page->images) $files = $page->files;
 
-        $apartments = $this->apartmentRepository->getAll();
+        $apartments = $this->apartmentRepository->getAll(1);
 
 
 
@@ -129,6 +129,7 @@ class ApartmentController extends Controller
 
         return Inertia::render('Apartments', [
             "apartments" => $apartments,
+            'filter' => $this->getAttributes(),
             "page" => $page, "seo" => [
                 "title"=>$page->meta_title,
                 "description"=>$page->meta_description,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PageRequest;
 use App\Models\Page;
+use App\Models\PageSection;
 use App\Repositories\Eloquent\PageSectionRepository;
 use App\Repositories\PageRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
@@ -112,6 +113,10 @@ class PageController extends Controller
         $this->pageRepository->saveFiles($page->id, $request);
 
         $this->pageSectionRepository->saveFile($page->id, $request);
+
+        foreach ($request['link'] as $id => $data){
+            PageSection::where('id', $id)->update(['link' => $data]);
+        }
 
 
 
