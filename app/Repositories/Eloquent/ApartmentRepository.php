@@ -65,7 +65,13 @@ class ApartmentRepository extends BaseRepository
 
         if (isset($params['city'])){
 
-            $query->whereIn('cities.id', explode(',', $params['city']));
+            $query->whereIn('projects.city_id', explode(',', $params['city']));
+
+        }
+
+        if (isset($params['district'])){
+
+            $query->whereIn('projects.district_id', explode(',', $params['district']));
 
         }
 

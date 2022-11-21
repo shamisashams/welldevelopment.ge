@@ -80,9 +80,43 @@ const Filters = ({ appliedFilters }) => {
         delete appliedFilters["area"];
         setValues([]);
     }
+
+    const [filteredList, setFilteredList] = new useState(filter.cities);
+
+    const filterBySearch = (event) => {
+        // Access input value
+        const query = event.target.value;
+        // Create copy of item list
+        var updatedList = [...filter.cities];
+        // Include all elements which includes the search query
+        updatedList = updatedList.filter((item) => {
+            return item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+        });
+        // Trigger render with updated values
+        setFilteredList(updatedList);
+    };
+
+
+
+
     const [cityIndex, setCityIndex] = useState(0);
     const [showDistricts, setShowDistrict] = useState(false);
     const [checked, setChecked] = useState();
+
+    const [filteredList_d, setFilteredList_d] = new useState(filter.cities[cityIndex].districts);
+
+    const filterBySearch_d = (event) => {
+        // Access input value
+        const query = event.target.value;
+        // Create copy of item list
+        var updatedList = [...filter.cities[cityIndex].districts];
+        // Include all elements which includes the search query
+        updatedList = updatedList.filter((item) => {
+            return item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+        });
+        // Trigger render with updated values
+        setFilteredList_d(updatedList);
+    };
     return (
         <div className="flex items-start lg:flex-row flex-col">
             <SelectFilter
@@ -106,11 +140,11 @@ const Filters = ({ appliedFilters }) => {
             >
                 <div className="relative text-sm xl:py-4 xl:px-6">
                     <div className="relative ">
-                        <input className="pl-7" type="text" name="" id="" />
+                        <input className="pl-7" type="text" name="" id="" onChange={filterBySearch} />
                         <CiSearch className="absolute left-2 top-2 w-4 h-4" />
                     </div>
                     <div className="max-h-48 overflow-y-scroll scrollbar">
-                        {filter.cities.map((item, index) => {
+                        {filteredList.map((item, index) => {
                             if (appliedFilters.hasOwnProperty("city")) {
                                 if (
                                     appliedFilters["city"].includes(
@@ -159,10 +193,10 @@ const Filters = ({ appliedFilters }) => {
                         } origin-top absolute left-0 top-0 w-full rounded-xl bg-white xl:shadow-lg transition-all duration-300 xl:py-4 xl:px-6 w-full text-sm z-40 overflow-hidden`}
                     >
                         <div className="relative">
-                            <input className="pl-7" type="text" name="" id="" />
+                            <input className="pl-7" type="text" name="" id="" onChange={filterBySearch_d} />
                             <CiSearch className="absolute left-2 top-2 w-4 h-4" />
                             <div className="max-h-48 overflow-y-scroll scrollbar">
-                                {filter.cities[cityIndex].districts.map(
+                                {filteredList_d.map(
                                     (item, index) => {
                                         if (
                                             appliedFilters.hasOwnProperty(
