@@ -156,7 +156,7 @@ class ApartmentRepository extends BaseRepository
         $query->groupBy('apartments.id');
 
 
-        return $query->with('latestImage')->paginate('8')->withQueryString();
+        return $query->with(['translation','latestImage'])->paginate('8')->withQueryString();
     }
 
 
