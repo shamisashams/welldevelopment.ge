@@ -78,7 +78,7 @@ const HeroSlider = () => {
                                         {renderHTML(item.description)}
                                         <Link
                                             className="group flex items-center justify-center bg-white rounded-md w-fit p-3 bold sm:mt-8 mt-4"
-                                            href="/"
+                                            href={item.youtube_url}
                                         >
                                             <span className="group-hover:max-w-sm max-w-0 overflow-hidden whitespace-nowrap group-hover:pr-2 transition-all duration-300">
                                                 {__(

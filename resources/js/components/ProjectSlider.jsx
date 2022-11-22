@@ -5,6 +5,7 @@ import { ActiveProject, BlogBox, ProjectBox } from "./ProjectBoxes";
 import { activeProject, blogs, projects } from "./Data";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import {usePage} from "@inertiajs/inertia-react";
 
 export const ProjectSlider1 = ({items}) => {
   return (
@@ -46,6 +47,7 @@ export const ProjectSlider1 = ({items}) => {
 };
 
 export const ProjectSlider2 = ({items}) => {
+    const { localizations } = usePage().props;
     let _cart = localStorage.getItem("welldevelopment_favorite");
     let cart;
     if (_cart !== null) {
@@ -95,7 +97,7 @@ export const ProjectSlider2 = ({items}) => {
                 para={item.short_description}
                 bedroom={item.bedrooms}
                 bathroom={item.bathrooms}
-                dimension={item.area + ' M'}
+                dimension={item.area + ' ' + __("client.m_2", localizations)}
                 active={item.action === 1 ? true:false}
                 product={item}
                 favorite={favorite}

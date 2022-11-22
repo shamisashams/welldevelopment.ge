@@ -72,7 +72,7 @@ const SingleProject = ({seo}) => {
                                       {__('client.recreational_space',localizations)}
                                   </div>
                                   <span className="bold text-xl pl-3 align-middle">
-                  {project.recreational_space} კვ.მ
+                  {project.recreational_space} {__("client.m_2", localizations)}
                 </span>
                               </p>
                               <p className="flex  mr-5 mb-5 text-sm">
@@ -124,7 +124,7 @@ const SingleProject = ({seo}) => {
                                       para={item.para}
                                       bedroom={item.bedrooms}
                                       bathroom={item.bathrooms}
-                                      dimension={item.area + ' M'}
+                                      dimension={item.area + ' ' + __("client.m_2", localizations)}
                                       active={item.action === 1 ? true:false}
                                       favorite={favorite}
                                   />

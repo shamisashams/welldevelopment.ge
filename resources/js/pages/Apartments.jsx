@@ -67,7 +67,7 @@ const Apartments = ({seo}) => {
                                   para={item.short_description}
                                   bedroom={item.bedrooms}
                                   bathroom={item.bathrooms}
-                                  dimension={item.area + ' M'}
+                                  dimension={item.area + ' ' + __("client.m_2", localizations)}
                                   active={item.action === 1 ? true:false}
                                   favorite={favorite}
                               />
