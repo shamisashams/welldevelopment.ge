@@ -53,7 +53,7 @@ const Filters = ({ appliedFilters }) => {
     let checked;
     const handleFilterClick = function (event, code, value) {
         //Inertia.visit('?brand=12');
-        event.target.classList.toggle("checked");
+        //event.target.classList.toggle("checked");
 
         if (event.target.checked === true) {
             if (appliedFilters.hasOwnProperty(code)) {
@@ -112,6 +112,54 @@ const Filters = ({ appliedFilters }) => {
         // Trigger render with updated values
         setFilteredList_d(updatedList);
     };
+
+
+    let options = function (code, options) {
+        let rows = [];
+        let checked1;
+
+        options.map((item, index) => {
+            if (appliedFilters.hasOwnProperty(code)) {
+                if (appliedFilters[code].includes(item.id.toString())) {
+                    checked1 = true;
+                } else checked1 = false;
+            } else checked1 = false;
+
+            rows.push(
+                <div
+                    key={index}
+                    className="flex justify-start items-center mb-3"
+                    onClick={() => {
+                        setShowDistrict(true);
+                        setCityIndex(index);
+                    }}
+                >
+                    <input
+                        onClick={(event) => {
+                            handleFilterClick(
+                                event,
+                                "city",
+                                item.id
+                            );
+                        }}
+                        defaultChecked={checked1}
+                        type="checkbox"
+                        id={`cityInput-${item.id}`}
+                    />
+                    <label htmlFor={`cityInput-${item.id}`}>
+                        <div></div>
+                    </label>
+                    <label htmlFor={`cityInput-${item.id}`}>
+                        {item.title}
+                    </label>
+                </div>
+            );
+        });
+        return rows;
+    };
+
+
+
     return (
         <div className="flex items-start lg:flex-row flex-col">
             <SelectFilter
@@ -145,6 +193,7 @@ const Filters = ({ appliedFilters }) => {
                         <CiSearch className="absolute left-2 top-2 w-4 h-4" />
                     </div>
                     <div className="max-h-48 overflow-y-scroll scrollbar">
+                        {/*{options('city',filteredList)}*/}
                         {filteredList.map((item, index) => {
                             if (appliedFilters.hasOwnProperty("city")) {
                                 if (
@@ -172,7 +221,7 @@ const Filters = ({ appliedFilters }) => {
                                                 item.id
                                             );
                                         }}
-                                        checked={checked}
+                                        defaultChecked={checked}
                                         type="checkbox"
                                         id={`cityInput-${item.id}`}
                                     />
@@ -230,10 +279,12 @@ const Filters = ({ appliedFilters }) => {
                                                         item.id
                                                     );
                                                 }}
-                                                checked={checked}
-                                                className={
+
+                                                defaultChecked={checked}
+
+                                                /*className={
                                                     checked ? "checked" : ""
-                                                }
+                                                }*/
                                                 type="checkbox"
                                                 id={`districtInput-${item.id}`}
                                             />
@@ -256,9 +307,9 @@ const Filters = ({ appliedFilters }) => {
                                     <span>უკან</span>
                                     <BiChevronLeft className="inline-block pl-1 text-xl" />
                                 </button>
-                                <button className="bg-custom-blue shadow shadow-custom-blue/[0.5] text-white py-2 px-3 rounded-md">
+                                {/*<button className="bg-custom-blue shadow shadow-custom-blue/[0.5] text-white py-2 px-3 rounded-md">
                                     არჩევა
-                                </button>
+                                </button>*/}
                             </div>
                         </div>
                     </div>
@@ -398,7 +449,7 @@ const Filters = ({ appliedFilters }) => {
                                             item.id
                                         );
                                     }}
-                                    checked={checked}
+                                    defaultChecked={checked}
                                     type="checkbox"
                                     name=""
                                     id={`statusInput-${item.id}`}
@@ -462,7 +513,7 @@ const Filters = ({ appliedFilters }) => {
                                             item.id
                                         );
                                     }}
-                                    checked={checked}
+                                    defaultChecked={checked}
                                     type="checkbox"
                                     name=""
                                     id={`conditionInput-${item.id}`}
