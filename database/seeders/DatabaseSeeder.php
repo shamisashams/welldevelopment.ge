@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             SettingSeeder2::class,
             UserSeeder::class,
             PageSectionsSeeder::class,
+            AttributeSeeder::class
         ]);
     }
 }

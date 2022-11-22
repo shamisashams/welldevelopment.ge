@@ -111,10 +111,10 @@
                                                     <i class="fa fa-edit">@lang('admin.edit_button')</i>
                                                 </a>
 
-                                                <a href="{{locale_route('attribute.destroy',$attribute->id)}}"
+                                                {{--<a href="{{locale_route('attribute.destroy',$attribute->id)}}"
                                                    class="pl-3">
                                                     <i class="fa fa-edit">@lang('admin.delete_button')</i>
-                                                </a>
+                                                </a>--}}
 
 
                                             </td>
