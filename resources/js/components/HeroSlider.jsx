@@ -105,7 +105,7 @@ const HeroSlider = () => {
                                                         item.project
                                                             .recreational_space
                                                     }{" "}
-                                                    კვ.მ
+                                                    {__("client.m_2", localizations)}
                                                 </span>
                                             </div>
                                             <div className="flex mr-10">
