@@ -60,4 +60,8 @@ class ApartmentAttributeValue extends Model
     {
         return $this->belongsTo(Apartment::class);
     }
+
+    public function option(): BelongsTo{
+        return $this->belongsTo(AttributeOption::class,'integer_value');
+    }
 }

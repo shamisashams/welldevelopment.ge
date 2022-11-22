@@ -41,6 +41,7 @@
                                     <th>@lang('admin.id')</th>
                                     <th>@lang('admin.status')</th>
                                     <th>@lang('admin.project')</th>
+                                    <th>@lang('admin.attributes')</th>
                                     <th>@lang('admin.title')</th>
                                     <th>@lang('admin.actions')</th>
                                 </tr>
@@ -61,6 +62,7 @@
                                             <option value="0" {{Request::get('status') === '0' ? 'selected' :''}}>@lang('admin.not_active')</option>
                                         </select>
                                     </th>
+                                    <th></th>
                                     <th></th>
                                     <th>
                                         <input class="form-control" type="text" name="title" onchange="this.form.submit()"
@@ -84,6 +86,42 @@
                                             </td>
                                             <td>
                                                 @if($item->project)<a href="{{route('project.edit',$item->project->id)}}">{{$item->project->title}}</a> @endif
+                                            </td>
+
+                                            <td>
+                                                <?php
+                                                $result = [];
+                                                foreach ($item->attribute_values as $_item){
+                                                    $options = $_item->attribute->options;
+                                                    $value = '';
+                                                    foreach ($options as $option){
+                                                        if($_item->attribute->type == 'select'){
+                                                            if($_item->integer_value == $option->id) {
+                                                                if($_item->attribute->code == 'size'){
+                                                                    $result[$_item->attribute->code] = $option->value;
+                                                                }
+                                                                elseif ($_item->attribute->code == 'corner'){
+                                                                    $result[$_item->attribute->code] = $option->code;
+                                                                }
+                                                                else {
+                                                                    $result[$_item->attribute->code] = $option->label;
+                                                                }
+
+                                                            }
+
+                                                        }
+                                                    }
+
+                                                }
+
+                                                $attributes = '';
+
+                                                foreach ($result as $key => $value){
+                                                    $attributes .= '<b>' . $key . '</b> : ' . $value . "\n";
+                                                }
+                                                $attributes .= '<b>area</b> : ' . $item->area . "\n";
+                                                ?>
+                                                <pre>{!! $attributes !!}</pre>
                                             </td>
                                             <td>
                                                 <div class="panel panel-primary tabs-style-2">
