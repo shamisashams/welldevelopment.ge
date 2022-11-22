@@ -114,17 +114,20 @@ class ApartmentRepository extends BaseRepository
         $attributes = $this->attributeRepository->getFilterAttributes(array_keys(request()->except('area') ? request()->except('area') : []));
         //dd($attributes);
         if (count($attributes) > 0) {
-            $query->where(function ($fQ) use ($attributes) {
+            //$query->where(function ($fQ) use ($attributes) {
                 foreach ($attributes as $attribute) {
-                    $fQ->orWhere(function ($aQ) use ($attribute) {
+                    $query->whereExists(function ($aQ) use ($attribute) {
                         $column = 'apartment_attribute_values.' . ApartmentAttributeValue::$attributeTypeFields[$attribute->type];
 
                         $filterInputValues = explode(',', request()->get($attribute->code));
 
                         //dump($column,$attribute->type,$filterInputValues);
 
+                        $aQ->select('apartments.id');
+                        $aQ->from('apartment_attribute_values');
                         //dd($filterInputValues);
                         $aQ->where('apartment_attribute_values.attribute_id', $attribute->id);
+                        $aQ->whereRaw('apartment_attribute_values.apartment_id = apartments.id');
 
                         $aQ->where(function ($attributeValueQuery) use ($column, $filterInputValues,$attribute) {
 
@@ -149,7 +152,7 @@ class ApartmentRepository extends BaseRepository
 
 
                 }
-            });
+            //});
         }
 
 
