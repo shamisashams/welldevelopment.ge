@@ -19,16 +19,12 @@ export const SelectFilter = ({ icon, title, subtitle, children }) => {
         <div className="select relative xl:border-r xl:px-5 md:px-3 mx-1  xl:mb-0 mb-2 2xl:text-base text-sm">
             <div
                 onClick={() => setClicked(!clicked)}
-                className="flex items-start justify-start cursor-pointer xl:mb-0 mb-3"
+                className="flex items-center justify-start cursor-pointer xl:mb-0 mb-3"
             >
                 <div className="flex justify-center items-center bg-custom-slate-200 rounded-xl w-12 h-12 shrink-0">
                     {icon}
                 </div>
-                <div className="mx-3 whitespace-nowrap">
-                    {title}
-                    <br />
-                    <span className="opacity-30 text-sm">{subtitle}</span>
-                </div>
+                <div className="mx-3 whitespace-nowrap">{title}</div>
                 <BiChevronDown
                     className={`w-5 h-5 transition-all duration-300 ${
                         clicked ? "rotate-180" : ""

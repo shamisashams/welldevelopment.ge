@@ -279,3 +279,30 @@ img {
 }
 
 /* hero slider end */
+
+/* apartments start */
+
+.aptShowcase {
+    height: 221px;
+}
+.aptShowcase.slider {
+    height: 550px;
+}
+.aptShowcase .swiper-pagination {
+    text-align: right !important;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+.aptShowcase .swiper-pagination-bullet-active {
+    background-color: #fff !important;
+}
+@media screen and (max-width: 700px) {
+    .aptShowcase {
+        height: 142px;
+    }
+    .aptShowcase.slider {
+        height: 247px;
+    }
+}
+
+/* apartments end */

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MainButton, SelectFilter } from "./Shared";
 import { CiSearch } from "react-icons/ci";
 import { Link, usePage } from "@inertiajs/inertia-react";
-import { BiChevronLeft } from "react-icons/bi";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const Filters = ({ appliedFilters }) => {
     const { filter, localizations } = usePage().props;
@@ -52,9 +52,6 @@ const Filters = ({ appliedFilters }) => {
     }
     let checked;
     const handleFilterClick = function (event, code, value) {
-        //Inertia.visit('?brand=12');
-        //event.target.classList.toggle("checked");
-
         if (event.target.checked === true) {
             if (appliedFilters.hasOwnProperty(code)) {
                 appliedFilters[code].push(value.toString());
@@ -64,7 +61,6 @@ const Filters = ({ appliedFilters }) => {
                 removeA(appliedFilters[code], value.toString());
             else delete appliedFilters[code];
         }
-        console.log(event.target.checked);
     };
 
     const handleCommit = () => {
@@ -83,13 +79,11 @@ const Filters = ({ appliedFilters }) => {
     const [cityIndex, setCityIndex] = useState(0);
     const [showDistricts, setShowDistrict] = useState(false);
 
-    const [filteredList_d, setFilteredList_d] = new useState(
-        []
-    );
+    const [filteredList_d, setFilteredList_d] = new useState([]);
 
     useEffect(() => {
-        setFilteredList_d(filter.cities[cityIndex].districts)
-    })
+        setFilteredList_d(filter.cities[cityIndex].districts);
+    });
 
     const filterBySearch = (event) => {
         // Access input value
@@ -104,8 +98,6 @@ const Filters = ({ appliedFilters }) => {
         setFilteredList(updatedList);
     };
 
-
-
     const filterBySearch_d = (event) => {
         // Access input value
         console.log(cityIndex);
@@ -119,11 +111,6 @@ const Filters = ({ appliedFilters }) => {
         // Trigger render with updated values
         setFilteredList_d(updatedList);
     };
-
-
-
-
-
 
     return (
         <div className="flex items-start lg:flex-row flex-col">
@@ -144,7 +131,6 @@ const Filters = ({ appliedFilters }) => {
                     </svg>
                 }
                 title={__("client.filter_city", localizations)}
-                subtitle="თბილისი"
             >
                 <div className="relative text-sm xl:py-4 xl:px-6">
                     <div className="relative ">
@@ -175,9 +161,6 @@ const Filters = ({ appliedFilters }) => {
                                     className="flex justify-start items-center mb-3"
                                     onClick={() => {
                                         setCityIndex(index);
-                                        //alert(cityIndex);
-                                        setShowDistrict(true);
-
                                     }}
                                 >
                                     <input
@@ -198,6 +181,12 @@ const Filters = ({ appliedFilters }) => {
                                     <label htmlFor={`cityInput-${item.id}`}>
                                         {item.title}
                                     </label>
+                                    <button
+                                        className=" pl-1 "
+                                        onClick={() => setShowDistrict(true)}
+                                    >
+                                        <BiChevronRight className="text-xl" />
+                                    </button>
                                 </div>
                             );
                         })}
@@ -235,7 +224,7 @@ const Filters = ({ appliedFilters }) => {
                                     } else checked = false;
                                     return (
                                         <div
-                                            key={item.id+index}
+                                            key={item.id + index}
                                             className="flex justify-start items-center mb-3"
                                         >
                                             <input
@@ -246,22 +235,26 @@ const Filters = ({ appliedFilters }) => {
                                                         item.id
                                                     );
                                                 }}
-
                                                 defaultChecked={checked}
-
                                                 /*className={
                                                     checked ? "checked" : ""
                                                 }*/
                                                 type="checkbox"
-                                                id={`districtInput-${item.id+index}`}
+                                                id={`districtInput-${
+                                                    item.id + index
+                                                }`}
                                             />
                                             <label
-                                                htmlFor={`districtInput-${item.id+index}`}
+                                                htmlFor={`districtInput-${
+                                                    item.id + index
+                                                }`}
                                             >
                                                 <div></div>
                                             </label>
                                             <label
-                                                htmlFor={`districtInput-${item.id+index}`}
+                                                htmlFor={`districtInput-${
+                                                    item.id + index
+                                                }`}
                                             >
                                                 {item.title}
                                             </label>
@@ -389,7 +382,6 @@ const Filters = ({ appliedFilters }) => {
                     </svg>
                 }
                 title={__("client.filter_status", localizations)}
-                subtitle="დასრულებული"
             >
                 <div className="max-h-48 overflow-y-scroll scrollbar xl:py-4 xl:px-6 py-2 ">
                     {filter.attributes.status.options.map((item, index) => {
@@ -454,7 +446,6 @@ const Filters = ({ appliedFilters }) => {
                     </svg>
                 }
                 title={__("client.filter_condition", localizations)}
-                subtitle="მწვანე კარკასი"
             >
                 <div className="max-h-48 overflow-y-scroll scrollbar xl:py-4 xl:px-6 py-2">
                     {filter.attributes.condition.options.map((item, index) => {
@@ -513,7 +504,6 @@ const Filters = ({ appliedFilters }) => {
                     </svg>
                 }
                 title={__("client.filter_area", localizations)}
-                subtitle="50 - 250 კვ. მ"
             >
                 <div className="xl:py-4 xl:px-6 py-2">
                     <div className="flex">

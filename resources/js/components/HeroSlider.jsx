@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { heroSlider } from "./Data";
-//import { Link } from "react-router-dom";
 import { Link, usePage } from "@inertiajs/inertia-react";
 import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
 import Filters from "./Filters";
@@ -143,7 +141,7 @@ const HeroSlider = () => {
                         </SwiperSlide>
                     );
                 })}
-                <div className="absolute left-1/2 xl:bottom-10 xl:top-auto bottom-auto top-3 -translate-x-1/2 wrapper flex justify-end items-center z-20">
+                <div className="absolute left-1/2 xl:bottom-10 xl:top-auto bottom-auto top-3 -translate-x-1/2 wrapper h-fit flex justify-end items-center z-20">
                     <button
                         ref={prevRef}
                         className="lg:w-12 lg:h-12 w-8 h-8 flex items-center justify-center bg-white rounded-md"
