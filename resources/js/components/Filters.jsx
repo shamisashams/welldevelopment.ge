@@ -83,7 +83,7 @@ const Filters = ({ appliedFilters }) => {
 
     useEffect(() => {
         setFilteredList_d(filter.cities[cityIndex].districts);
-    });
+    },[cityIndex]);
 
     const filterBySearch = (event) => {
         // Access input value
