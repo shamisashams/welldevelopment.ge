@@ -21,44 +21,27 @@
 
                                 @if(!empty($menuData[0]) && isset($menuData[0]))
                                     @foreach ($menuData[0]->menu as $menu)
-                                        @if(isset($menu->navheader))
-                                            <li class="navigation-header">
-                                                <a class="navigation-header-text">{{ __('admin.'.$menu->navheader) }}</a>
-                                                <i class="navigation-header-icon material-icons"></i>
-                                            </li>
-                                        @else
-                                            @php
-                                                $custom_classes="";
-                                                if(isset($menu->class))
-                                                {
-                                                $custom_classes = $menu->class;
-                                                }
-                                            @endphp
-                                            <li class="slide" {{(request()->is($menu->url.'*')) ? 'active' : '' }}">
-                                                <a class="{{$custom_classes}} {{ (request()->route()->getName() === $menu->url) ? 'active '.$configData['activeMenuColor'] : ''}}side-menu__item"
-                                                   @if(!empty($configData['activeMenuColor'])) {{'style=background:none;box-shadow:none;'}} @endif
-                                                   href="@if(($menu->url)==='javascript:void(0)'){{$menu->url}} @else{{locale_route($menu->url)}} @endif"
-                                                    {{isset($menu->newTab) ? 'target="_blank"':''}}>
-                                                    <i class="material-icons"></i>
-                                                    <span class="menu-title">{{ $menu->name}}</span>
-                                                    @if(isset($menu->tag))
-                                                        <span class="{{$menu->tagcustom}}">{{$menu->tag}}</span>
-                                                    @endif
-                                                    <i class="angle fe fe-chevron-right"></i>
-                                                </a>
-                                                @if(isset($menu->submenu))
+
+                                        <li class="slide">
+                                            <a class="side-menu__item"
+                                               href="@if(($menu->url)==='javascript:void(0)'){{$menu->url}}@else{{locale_route($menu->url)}}@endif"
+                                                {!! $menu->url==='javascript:void(0)' ? 'data-bs-toggle="slide"' : '' !!}>
+
+                                                <span class="side-menu__label">{{ $menu->name }}</span>
+
+                                                <i class="angle fe fe-chevron-right"></i>
+                                            </a>
+
+                                            @if(isset($menu->submenu))
                                                 <ul class="slide-menu">
-                                                    <li class="side-menu__label1"><a href="javascript:void(0);">Charts</a></li>
-                                                    <li><a class="slide-item" href="{{url('chart-morris')}}">Morris Charts</a></li>
-                                                    <li><a class="slide-item" href="{{url('chart-flot')}}">Flot Charts</a></li>
-                                                    <li><a class="slide-item" href="{{url('chart-chartjs')}}">ChartJS</a></li>
-                                                    <li><a class="slide-item" href="{{url('chart-echart')}}">Echart</a></li>
-                                                    <li><a class="slide-item" href="{{url('chart-sparkline')}}">Sparkline</a></li>
-                                                    <li><a class="slide-item" href="{{url('chart-peity')}}">Chart-peity</a></li>
+                                                    <li class="side-menu__label1"><a href="javascript:void(0);">{{ $menu->name }}</a></li>
+                                                    @foreach($menu->submenu as $_menu)
+                                                        <li><a class="slide-item" href="{{locale_route($_menu->url)}}">{{ $_menu->name}}</a></li>
+                                                    @endforeach
+
                                                 </ul>
-                                                @endif
-                                            </li>
-                                        @endif
+                                            @endif
+                                        </li>
                                     @endforeach
                                 @endif
 
