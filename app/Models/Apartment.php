@@ -123,7 +123,7 @@ class Apartment extends Model
 
     public function latestImage()
     {
-        return $this->morphOne(File::class, 'fileable')->latestOfMany();
+        return $this->morphOne(File::class, 'fileable')->orderBy('main','desc');
     }
 
     public function details():BelongsToMany{
