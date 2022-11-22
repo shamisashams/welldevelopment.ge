@@ -70,6 +70,7 @@ const Apartments = ({seo}) => {
                                   dimension={item.area + ' ' + __("client.m_2", localizations)}
                                   active={item.action === 1 ? true:false}
                                   favorite={favorite}
+                                  product={item}
                               />
                           );
                       })}

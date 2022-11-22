@@ -183,7 +183,9 @@ const Filters = ({ appliedFilters }) => {
                                     </label>
                                     <button
                                         className=" pl-1 "
-                                        onClick={() => setShowDistrict(true)}
+                                        onClick={() => {
+                                            setShowDistrict(true)
+                                        }}
                                     >
                                         <BiChevronRight className="text-xl" />
                                     </button>
@@ -264,7 +266,7 @@ const Filters = ({ appliedFilters }) => {
                             </div>
                             <div className="flex justify-between items-center text-sm mt-4">
                                 <button onClick={() => setShowDistrict(false)}>
-                                    <span>უკან</span>
+                                    <span>{__('client.back',localizations)}</span>
                                     <BiChevronLeft className="inline-block pl-1 text-xl" />
                                 </button>
                                 {/*<button className="bg-custom-blue shadow shadow-custom-blue/[0.5] text-white py-2 px-3 rounded-md">
