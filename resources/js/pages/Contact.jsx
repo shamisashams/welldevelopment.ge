@@ -113,7 +113,7 @@ const Contact = ({seo,info}) => {
                                       className="bg-gray-100 text-sm rounded-2xl"
                                       type="email"
                                       name="email"
-                                      placeholder="ელ. ფოსტა"
+                                      placeholder={__('client.form_email',localizations)}
                                       onChange={handleChange}
                                   />
                                   {errors.email && <div>{errors.email}</div>}
