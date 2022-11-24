@@ -15,7 +15,7 @@ class UpdateApartmentsAddFloor extends Migration
     {
         //
         Schema::table('apartments', function (Blueprint $table) {
-            $table->json('floors')->default('[]');
+            $table->json('floors')->nullable();
             $table->float('area')->default(0);
         });
     }
