@@ -30,7 +30,7 @@ const Blogs = ({seo}) => {
                           {__('client.blog',localizations)}
                       </text>
                   </svg>
-                  <div className="flex items-center justify-start sm:-mt-20 -mt-10 pb-32 flex-col lg:flex-row">
+                  {last_blog ? <div className="flex items-center justify-start sm:-mt-20 -mt-10 pb-32 flex-col lg:flex-row">
                       <div className="max-w-xl rounded-xl lg:mr-10 mb-10 lg:mb-0 h-fit overflow-hidden">
                           <img src={last_blog.latest_image?last_blog.latest_image.full_url:null} alt="" />
                       </div>
@@ -48,7 +48,7 @@ const Blogs = ({seo}) => {
                               <MainButton text={__('client.blog_view',localizations)} />
                           </Link>
                       </div>
-                  </div>
+                  </div>:null}
                   <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-10 gap-x-5 pb-5">
                       {blogs.data.map((item, index) => {
                           return (
