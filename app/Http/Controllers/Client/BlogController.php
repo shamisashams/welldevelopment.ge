@@ -37,7 +37,9 @@ class BlogController extends Controller
 
         //dd($last_blog);
 
-        $blogs = [];
+        $blogs = [
+            'data' => []
+        ];
 
         if ($last_blog)
         $blogs = Blog::orderBy('created_at','desc')->with(['translation','latestImage'])->where('id','!=',$last_blog->id)->paginate(8);
