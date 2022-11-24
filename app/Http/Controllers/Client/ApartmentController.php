@@ -23,7 +23,7 @@ class ApartmentController extends Controller
 
     public function index()
     {
-        $page = Page::where('key', 'about')->firstOrFail();
+        $page = Page::where('key', 'apartments')->firstOrFail();
 
         $images = [];
         foreach ($page->sections as $sections){
@@ -106,7 +106,7 @@ class ApartmentController extends Controller
 
     public function offer()
     {
-        $page = Page::where('key', 'about')->firstOrFail();
+        $page = Page::where('key', 'apartments')->firstOrFail();
 
         $images = [];
         foreach ($page->sections as $sections){
