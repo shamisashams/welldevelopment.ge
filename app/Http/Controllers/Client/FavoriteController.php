@@ -37,7 +37,7 @@ class FavoriteController extends Controller
      */
     public function index(string $locale, Request $request)
     {
-        $page = Page::where('key', 'products')->firstOrFail();
+        $page = Page::where('key', 'apartments')->firstOrFail();
         /*$products = Product::with(['files'])->whereHas('categories',function (Builder $query){
             $query->where('status', 1);
         })->paginate(16);*/
