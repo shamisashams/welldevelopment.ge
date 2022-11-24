@@ -82,7 +82,7 @@ const Filters = ({ appliedFilters }) => {
     const [filteredList_d, setFilteredList_d] = new useState([]);
 
     useEffect(() => {
-        setFilteredList_d(filter.cities[cityIndex].districts);
+        setFilteredList_d(filter.cities.length > 0 ? filter.cities[cityIndex].districts : []);
     },[cityIndex]);
 
     const filterBySearch = (event) => {
