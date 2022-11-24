@@ -136,7 +136,7 @@ class Apartment extends Model
 
     public function setFloorsAttribute($value)
     {
-        $this->attributes['floors'] = json_encode($value);
+        $this->attributes['floors'] = json_encode($value) ? json_encode($value) : [];
     }
 
     public function attribute_values(): HasMany
