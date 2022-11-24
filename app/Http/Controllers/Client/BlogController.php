@@ -38,7 +38,8 @@ class BlogController extends Controller
         //dd($last_blog);
 
         $blogs = [
-            'data' => []
+            'data' => [],
+            'links' => []
         ];
 
         if ($last_blog)
