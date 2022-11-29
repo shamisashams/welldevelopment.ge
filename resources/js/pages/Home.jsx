@@ -82,7 +82,7 @@ const Home = ({seo, page}) => {
                                   <img className="w-full h-full object-cover" src="/client/assets/images/blog/1.png" alt="" />
                                   <AiFillPlayCircle className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:animate-pulse w-9 h-9 text-white" />
                               </div>
-                              <div>
+                              {/*<div>
                                   <div className="bold">{__('client.home_about_h',localizations)}</div>
                                   <p className="opacity-70 my-1 text-sm">
                                       {__('client.home_about_t',localizations)}
@@ -90,7 +90,7 @@ const Home = ({seo, page}) => {
                                   <a target="_blank" href={page.sections[0].link} className="text-custom-blue underline">
                                       {__('client.home_about_video',localizations)}
                                   </a>
-                              </div>
+                              </div>*/}
                           </div>
                       </div>
                       <div className="max-w-xl">
