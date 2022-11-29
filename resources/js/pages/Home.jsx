@@ -78,10 +78,10 @@ const Home = ({seo, page}) => {
                               <img className="w-full h-full object-cover" src={images[0]} alt="" />
                           </div>
                           <div className="flex">
-                              <div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0 mr-3">
+                              {/*<div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0 mr-3">
                                   <img className="w-full h-full object-cover" src="/client/assets/images/blog/1.png" alt="" />
                                   <AiFillPlayCircle className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:animate-pulse w-9 h-9 text-white" />
-                              </div>
+                              </div>*/}
                               {/*<div>
                                   <div className="bold">{__('client.home_about_h',localizations)}</div>
                                   <p className="opacity-70 my-1 text-sm">
