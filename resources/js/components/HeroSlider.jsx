@@ -81,10 +81,7 @@ const HeroSlider = () => {
                                             href={item.youtube_url}
                                         >
                                             <span className="group-hover:max-w-sm max-w-0 overflow-hidden whitespace-nowrap group-hover:pr-2 transition-all duration-300">
-                                                {__(
-                                                    "client.view_more",
-                                                    localizations
-                                                )}
+                                                {__("client.view_more", localizations)}
                                             </span>
                                             <HiArrowRight className="w-6 h-6" />
                                         </Link>
@@ -108,10 +105,7 @@ const HeroSlider = () => {
                                             <div className="flex mr-10">
                                                 <div className="text-right opacity-50 pr-3 border-r  border-slate-500">
                                                     {renderHTML(
-                                                        __(
-                                                            "client.slide_parking",
-                                                            localizations
-                                                        ).newLineToBr()
+                                                        __("client.slide_parking", localizations).newLineToBr()
                                                     )}
                                                 </div>
                                                 <span className="bold text-3xl pl-3 align-middle">
@@ -121,10 +115,7 @@ const HeroSlider = () => {
                                             <div className="flex mr-10">
                                                 <div className="text-right opacity-50 pr-3 border-r  border-slate-500">
                                                     {renderHTML(
-                                                        __(
-                                                            "client.slide_available_flats",
-                                                            localizations
-                                                        ).newLineToBr()
+                                                        __("client.slide_available_flats", localizations).newLineToBr()
                                                     )}
                                                 </div>
                                                 <span className="bold text-3xl pl-3 align-middle">
