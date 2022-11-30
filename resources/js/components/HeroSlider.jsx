@@ -94,10 +94,7 @@ const HeroSlider = () => {
                                             <div className="flex mr-10">
                                                 <div className="text-right opacity-50 pr-3 border-r border-slate-500">
                                                     {renderHTML(
-                                                        __(
-                                                            "client.slide_recreational_space",
-                                                            localizations
-                                                        ).newLineToBr()
+                                                        __("client.slide_recreational_space", localizations).newLineToBr()
                                                     )}
                                                 </div>
                                                 <span className="bold text-3xl pl-3 align-middle">
