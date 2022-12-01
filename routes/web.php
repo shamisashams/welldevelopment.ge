@@ -86,7 +86,7 @@ Route::prefix('{locale?}')
 
 
                 Route::resource('project', \App\Http\Controllers\Admin\ProjectController::class);
-                Route::get('project/{project}/project', [\App\Http\Controllers\Admin\ProjectController::class, 'destroy'])->name('project.destroy');
+                Route::get('project/{project}/destroy', [\App\Http\Controllers\Admin\ProjectController::class, 'destroy'])->name('project.destroy');
 
                 Route::resource('apartment', \App\Http\Controllers\Admin\ApartmentController::class);
                 Route::get('apartment/{apartment}/apartment', [\App\Http\Controllers\Admin\ApartmentController::class, 'destroy'])->name('apartment.destroy');

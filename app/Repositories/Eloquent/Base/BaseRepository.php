@@ -107,6 +107,7 @@ class BaseRepository implements EloquentRepositoryInterface
             $this->model->delete($id);
             return $this->findTrash($id);
         } catch (\Exception $exception) {
+            dd($exception->getMessage());
             return $exception->getMessage();
         }
     }
