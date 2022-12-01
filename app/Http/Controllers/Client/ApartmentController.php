@@ -70,7 +70,11 @@ class ApartmentController extends Controller
         //\Illuminate\Support\Facades\DB::enableQueryLog();
 
 
-        $apartment = Apartment::query()->where('slug',$slug)->where('status',1)->with(['translation','latestImage','files','details.translation','project.translation','project.coverSlider','project.city.translation','project.district.translation'])->firstOrFail();
+        $apartment = Apartment::query()->where('slug',$slug)->where('status',1)->with(['translation','latestImage','files','details.translation','project.translation','project.coverSlider','project.city.translation','project.district.translation'])
+            ->whereHas('project',function ($q){
+                $q->where('status',1);
+            })
+            ->firstOrFail();
 
         $related_apartment = Apartment::query()->where('id','!=',$apartment->id)->where('status',1)->with(['translation','latestImage'])->limit(4)->inRandomOrder()->get();
 

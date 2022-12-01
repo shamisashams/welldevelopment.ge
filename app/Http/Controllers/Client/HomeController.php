@@ -34,14 +34,17 @@ class HomeController extends Controller
 
         }
 
-        $sliders = Slider::query()->where("status", 1)->with(['file', 'translations','project.translation','project.apartments.translation'])->get();
+        $sliders = Slider::query()->where("status", 1)->with(['file', 'translations','project.translation','project.apartments.translation'])
+            ->whereHas('project',function ($q){
+                $q->where('projects.status',1);
+            })->get();
 //        dd($page->file);
        //dd($sliders);
 
-        $projects = Project::with(['translation','latestImage'])->get();
+        $projects = Project::with(['translation','latestImage'])->where('status',1)->get();
 
 
-        $apartments = Apartment::with(['translation','latestImage'])->where('offer',1)->inRandomOrder()->limit(8)->get();
+        $apartments = Apartment::with(['translation','latestImage'])->where('offer',1)->where('status',1)->inRandomOrder()->limit(8)->get();
 
         $blogs = Blog::with(['translation','latestImage'])->limit(8)->inRandomOrder()->get();
 

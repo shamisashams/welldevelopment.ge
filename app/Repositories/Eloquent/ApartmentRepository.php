@@ -50,6 +50,7 @@ class ApartmentRepository extends BaseRepository
         ->leftJoin('cities', 'cities.id', '=', 'projects.city_id')
             ->leftJoin('apartment_attribute_values','apartment_attribute_values.apartment_id','apartments.id');
 
+        $query->where('projects.status',1);
 
         if ($offer !== null){
             $query->where('offer',$offer);
@@ -156,6 +157,7 @@ class ApartmentRepository extends BaseRepository
         }
 
 
+        $query->where('apartments.status',1);
         $query->groupBy('apartments.id');
 
 
