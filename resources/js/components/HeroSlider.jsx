@@ -72,10 +72,12 @@ const HeroSlider = () => {
                                 />
                                 <div className="wrapper">
                                     <div className="max-w-2xl">
-                                        <div className="xl:text-5xl sm:text-3xl text-xl bold xl:mb-8 mb-3">
+                                        <div className="xl:text-5xl sm:text-3xl text-xl bold xl:mb-8 mb-3 text-white">
                                             {item.title}
                                         </div>
+                                        <div className="text-white">
                                         {renderHTML(item.description)}
+                                        </div>
                                         <Link
                                             className="group flex items-center justify-center bg-white rounded-md w-fit p-3 bold sm:mt-8 mt-4"
                                             href={item.youtube_url}
@@ -87,7 +89,7 @@ const HeroSlider = () => {
                                         </Link>
                                     </div>
                                     {item.project ? (
-                                        <div className="lg:flex hidden justify-start xl:mt-60 mt-10 ">
+                                        <div className="lg:flex hidden justify-start xl:mt-60 mt-10 text-white">
                                             <div className="flex mr-10">
                                                 <div className="text-right opacity-50 pr-3 border-r border-slate-500">
                                                     {renderHTML(
