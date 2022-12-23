@@ -76,8 +76,8 @@ class ApartmentController extends Controller
             })
             ->firstOrFail();
 
-        if($apartment['floor'] === null){
-            $apartment['floor'] = [];
+        if($apartment['floors'] === null){
+            $apartment['floors'] = [];
         }
 
         $related_apartment = Apartment::query()->where('id','!=',$apartment->id)->where('status',1)->with(['translation','latestImage'])->limit(4)->inRandomOrder()->get();
