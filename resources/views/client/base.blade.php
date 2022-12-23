@@ -68,6 +68,7 @@
             return rows;
         };
 
+        localStorage.removeItem('welldevelopment_favorite');
     </script>
 </head>
 <body>
