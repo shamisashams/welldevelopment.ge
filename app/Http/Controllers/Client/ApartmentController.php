@@ -76,6 +76,8 @@ class ApartmentController extends Controller
             })
             ->firstOrFail();
 
+        dd($apartment);
+
         $related_apartment = Apartment::query()->where('id','!=',$apartment->id)->where('status',1)->with(['translation','latestImage'])->limit(4)->inRandomOrder()->get();
 
 
